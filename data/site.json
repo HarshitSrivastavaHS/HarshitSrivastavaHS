@@ -1,0 +1,239 @@
+{
+  "profile": {
+    "name": "Harshit Srivastava",
+    "shortRole": "Y2 CEG at NUS"
+  },
+  "navigation": [
+    { "label": "Home", "href": "index.html", "page": "home" },
+    { "label": "Projects", "href": "projects.html", "page": "projects" },
+    { "label": "Posters", "href": "posters.html", "page": "posters" }
+  ],
+  "home": {
+    "title": "I build things close to hardware.",
+    "subtitle": "NUS Computer Engineering. Satellites, robotics, embedded systems, websites, posters.",
+    "ctaPrimary": "Open Projects",
+    "ctaSecondary": "LinkedIn",
+    "notes": [
+      {
+        "icon": "satellite",
+        "detail": "CubeSat work and SpaceWire simulation."
+      },
+      {
+        "icon": "tools",
+        "detail": "Embedded, FPGA, Linux, and robotics."
+      },
+      {
+        "icon": "pen",
+        "detail": "I also make visual stuff when it fits."
+      }
+    ]
+  },
+  "explorer": {
+    "path": "/home/harshit/portfolio",
+    "defaultFolder": "about",
+    "projectLinksFolder": {
+      "id": "weblinks",
+      "label": "Web Links",
+      "short": "live sites",
+      "title": "Web Links.",
+      "summary": "Live websites and web stuff.",
+      "artClass": "web",
+      "columns": 2,
+      "cards": [
+        {
+          "type": "links",
+          "title": "Websites",
+          "body": "",
+          "items": [
+            { "label": "NUS GPA Calculator", "href": "https://gpa-calculator.harshitsri.com", "external": true },
+            { "label": "Crime Detective", "href": "https://detective.harshitsri.com", "external": true },
+            { "label": "UniQuest Website", "href": "https://uniquest.harshitsri.com", "external": true }
+          ]
+        },
+        {
+          "type": "text",
+          "title": "Stack",
+          "body": "React, Next.js, Node, Supabase, Firebase."
+        }
+      ]
+    },
+    "folders": [
+      {
+        "id": "about",
+        "label": "About",
+        "short": "who i am",
+        "title": "Engineer first, but not only that.",
+        "summary": "Y2 CEG at NUS. I like hardware-software systems that actually have to work.",
+        "artClass": "system",
+        "columns": 2,
+        "cards": [
+          {
+            "type": "text",
+            "title": "Main lane",
+            "body": "Embedded systems, robotics, FPGA/SoC, Linux.",
+            "tags": ["Embedded", "FPGA", "Linux", "Robotics"]
+          },
+          {
+            "type": "text",
+            "title": "Also into",
+            "body": "Web tools, games, posters, interactive experiments.",
+            "tags": ["Web", "Games", "Design"]
+          }
+        ]
+      },
+      {
+        "id": "projects",
+        "label": "Projects",
+        "short": "selected builds",
+        "title": "A few things I have made.",
+        "summary": "Mostly systems work. Sometimes not.",
+        "artClass": "projects",
+        "columns": 2,
+        "cards": [
+          {
+            "type": "folderlink",
+            "title": "Web Links",
+            "body": "Live websites and web stuff.",
+            "targetId": "weblinks"
+          },
+          {
+            "type": "text",
+            "title": "Galassia-5",
+            "body": "SpaceWire simulator for early CubeSat validation.",
+            "tags": ["FPGA", "Linux", "SpaceWire"]
+          },
+          {
+            "type": "text",
+            "title": "UniQuest",
+            "body": "NUS-themed platformer built during Orbital.",
+            "tags": ["Godot", "Game"]
+          },
+          {
+            "type": "text",
+            "title": "Robotics / embedded",
+            "body": "Microcontrollers, sensors, actuators, debugging.",
+            "tags": ["C/C++", "ROS 2", "Arduino"]
+          }
+        ]
+      },
+      {
+        "id": "posters",
+        "label": "Posters",
+        "short": "visual work",
+        "title": "Visual work lives here.",
+        "summary": "Posters, publicity, layout experiments.",
+        "artClass": "posters",
+        "columns": 2,
+        "cards": [
+          {
+            "type": "text",
+            "title": "Mostly",
+            "body": "Student publicity and project visuals.",
+            "tags": ["Posters", "Layout"]
+          },
+          {
+            "type": "links",
+            "title": "Gallery",
+            "body": "",
+            "items": [
+              { "label": "Open poster gallery", "href": "posters.html", "external": false }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "pageTitle": "Projects.",
+    "pageIntro": "A few selected builds.",
+    "items": [
+      {
+        "title": "Galassia-5 SpaceWire Simulator",
+        "category": "Satellite Systems",
+        "description": "Early SpaceWire validation for CubeSat integration.",
+        "technologies": ["FPGA", "Verilog", "Vivado", "Vitis", "Linux", "Python", "SpaceWire"]
+      },
+      {
+        "title": "UniQuest",
+        "category": "Game Development",
+        "description": "NUS-themed platformer with custom mechanics and touch controls.",
+        "technologies": ["Godot", "Pixel art", "Android", "Web"],
+        "link": {
+          "label": "Open project",
+          "href": "https://uniquest.harshitsri.com"
+        }
+      },
+      {
+        "title": "Robotics and Embedded Builds",
+        "category": "Embedded Systems",
+        "description": "Microcontrollers, sensors, actuators, debugging.",
+        "technologies": ["C", "C++", "Arduino", "ROS 2", "Linux"]
+      },
+      {
+        "title": "Discord Bots",
+        "category": "Software",
+        "description": "Automation bots with JavaScript and APIs.",
+        "technologies": ["JavaScript", "Node.js", "Discord.js", "APIs"]
+      }
+    ],
+    "websites": [
+      {
+        "title": "NUS GPA Calculator",
+        "type": "Utility Site",
+        "description": "A fast GPA tool made for NUS students.",
+        "href": "https://gpa-calculator.harshitsri.com"
+      },
+      {
+        "title": "Crime Detective",
+        "type": "Interactive Web Project",
+        "description": "A browser-based detective experience for CFG Career Quest 2025.",
+        "href": "https://detective.harshitsri.com"
+      },
+      {
+        "title": "UniQuest Website",
+        "type": "Project Site",
+        "description": "Web home for the Orbital game project.",
+        "href": "https://uniquest.harshitsri.com"
+      }
+    ]
+  },
+  "posters": {
+    "pageTitle": "Posters.",
+    "pageIntro": "A small visual archive.",
+    "items": [
+      {
+        "title": "Poster 01",
+        "caption": "Publicity and campaign design from student and project contexts.",
+        "image": "images/1.png"
+      },
+      {
+        "title": "Poster 02",
+        "caption": "More graphic, more direct, built to catch attention quickly.",
+        "image": "images/2.png"
+      },
+      {
+        "title": "Poster 03",
+        "caption": "Layout and hierarchy doing most of the work.",
+        "image": "images/3.png"
+      },
+      {
+        "title": "Poster 04",
+        "caption": "Still part of the portfolio, just in its own room now.",
+        "image": "images/4.png"
+      }
+    ]
+  },
+  "contact": {
+    "links": [
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/hs-harshit"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/harshitsrivastavahs"
+      }
+    ]
+  },
+  "footer": {}
+}
