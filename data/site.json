@@ -1,10 +1,10 @@
 {
   "profile": {
     "name": "Harshit Srivastava",
-    "shortRole": "Y2 CEG at NUS"
+    "shortRole": "Y2 CEG@NUS"
   },
   "navigation": [
-    { "label": "Home", "href": "index.html", "page": "home" },
+    { "label": "Home", "href": "/", "page": "home" },
     { "label": "Projects", "href": "projects.html", "page": "projects" },
     { "label": "Posters", "href": "posters.html", "page": "posters" }
   ],
@@ -41,7 +41,7 @@
       {
         "id": "about",
         "label": "About",
-        "short": "who i am",
+        "short": "Who I am",
         "title": "Engineer first, but not only that.",
         "summary": "Y2 CEG at NUS. I like hardware-software systems that actually have to work.",
         "artClass": "system",
@@ -144,7 +144,7 @@
         "technologies": ["Godot", "Pixel art", "Android", "Web"],
         "links": [
           {
-            "label": "Website",
+            "label": "Website Build",
             "href": "https://uniquest.harshitsri.com"
           }
         ]
@@ -240,23 +240,23 @@
     ],
     "items": [
       {
-        "title": "Poster 01",
-        "caption": "Publicity and campaign design from student and project contexts.",
+        "title": "Bitscraps Subcommittee Recruitment",
+        "caption": "Publicity and campaign design, created in Figma.",
         "image": "images/1.png"
       },
       {
-        "title": "Poster 02",
-        "caption": "More graphic, more direct, built to catch attention quickly.",
+        "title": "UniQuest Proposal Poster",
+        "caption": "Proposal Poster for my Orbital Project.",
         "image": "images/2.png"
       },
       {
-        "title": "Poster 03",
-        "caption": "Layout and hierarchy doing most of the work.",
+        "title": "UniQuest Milestone 1 Poster",
+        "caption": "1st Milestone Poster for my Orbital Project.",
         "image": "images/3.png"
       },
       {
-        "title": "Poster 04",
-        "caption": "Still part of the portfolio, just in its own room now.",
+        "title": "UniQuest Project Showcase Poster",
+        "caption": "Final Poster for my Orbital Project.",
         "image": "images/4.png"
       }
     ]
