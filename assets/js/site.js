@@ -1,5 +1,7 @@
 const page = document.body.dataset.page;
 
+const ROOT_ID = "__root__";
+
 async function loadSiteData() {
   const response = await fetch("data/site.json");
   if (!response.ok) throw new Error("Failed to load site content.");
@@ -33,16 +35,16 @@ function initCustomCursor() {
 
   function burstParticles() {
     const colors = ["var(--yellow)", "var(--blue)", "var(--mint)", "var(--peach)"];
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       const particle = document.createElement("span");
       particle.className = "cursor-burst";
       particle.style.setProperty("--burst-x", `${x}px`);
       particle.style.setProperty("--burst-y", `${y}px`);
-      particle.style.setProperty("--burst-dx", `${(Math.random() - 0.5) * 42}px`);
-      particle.style.setProperty("--burst-dy", `${-12 - Math.random() * 24}px`);
+      particle.style.setProperty("--burst-dx", `${(Math.random() - 0.5) * 64}px`);
+      particle.style.setProperty("--burst-dy", `${-18 - Math.random() * 34}px`);
       particle.style.setProperty("--burst-color", colors[i % colors.length]);
       document.body.append(particle);
-      window.setTimeout(() => particle.remove(), 700);
+      window.setTimeout(() => particle.remove(), 820);
     }
   }
 
@@ -61,14 +63,10 @@ function initCustomCursor() {
   window.addEventListener("mouseup", () => ring.classList.remove("is-pressed"));
   window.addEventListener("click", burstParticles);
   document.addEventListener("mouseover", (event) => {
-    if (event.target.closest("a, button")) {
-      ring.classList.add("is-hovering");
-    }
+    if (event.target.closest("a, button")) ring.classList.add("is-hovering");
   });
   document.addEventListener("mouseout", (event) => {
-    if (event.target.closest("a, button")) {
-      ring.classList.remove("is-hovering");
-    }
+    if (event.target.closest("a, button")) ring.classList.remove("is-hovering");
   });
 }
 
@@ -130,6 +128,17 @@ function renderHomeIntro(data) {
   `);
 }
 
+function renderLinks(items = []) {
+  if (!items.length) return "";
+  return `
+    <div class="mini-links">
+      ${items.map((entry) => `
+        <a class="mini-link" href="${entry.href}" ${entry.external !== false ? 'target="_blank" rel="noreferrer"' : ""}>${entry.label}</a>
+      `).join("")}
+    </div>
+  `;
+}
+
 function sectionCard(item) {
   if (item.type === "text") {
     return `
@@ -153,11 +162,20 @@ function sectionCard(item) {
   if (item.type === "links") {
     return `
       <article class="list-card">
+        ${item.title ? `<h3>${item.title}</h3>` : ""}
+        ${item.body ? `<p>${item.body}</p>` : ""}
+        ${renderLinks(item.items)}
+      </article>
+    `;
+  }
+
+  if (item.type === "cta") {
+    return `
+      <article class="list-card list-card--cta">
+        <div class="cta-illustration" aria-hidden="true"></div>
         <h3>${item.title}</h3>
         <p>${item.body}</p>
-        <div class="mini-links">
-          ${item.items.map((entry) => `<a class="mini-link" href="${entry.href}" ${entry.external ? 'target="_blank" rel="noreferrer"' : ""}>${entry.label}</a>`).join("")}
-        </div>
+        ${renderLinks(item.items)}
       </article>
     `;
   }
@@ -176,56 +194,240 @@ function sectionCard(item) {
     `;
   }
 
+  if (item.type === "project") {
+    const links = item.links || [];
+    const visual = item.media?.image
+      ? `<img src="${item.media.image}" alt="${item.title}">`
+      : "";
+
+    return `
+      <article class="project-card">
+        <div class="project-card-visual" aria-hidden="true">${visual}</div>
+        <div class="project-card-body">
+          <h3>${item.title}</h3>
+          ${item.category ? `<p>${item.category}</p>` : ""}
+          <p>${item.description}</p>
+          ${item.technologies?.length ? `
+            <div class="project-skills">
+              ${item.technologies.slice(0, 4).map((tech) => `<span class="skill-chip">${tech}</span>`).join("")}
+            </div>
+          ` : ""}
+          ${renderLinks(links)}
+        </div>
+      </article>
+    `;
+  }
+
+  if (item.type === "poster") {
+    return `
+      <article class="poster-card">
+        <figure>
+          <img src="${item.image}" alt="${item.title}">
+          <figcaption>
+            <h3>${item.title}</h3>
+            <p>${item.caption}</p>
+          </figcaption>
+        </figure>
+      </article>
+    `;
+  }
+
   return "";
 }
 
-function renderExplorer(data) {
-  const root = document.querySelector("[data-home-workspace]");
-  if (!root) return;
-
-  const folders = data.explorer.folders;
-  const allFolders = [data.explorer.projectLinksFolder, ...folders];
-  const homeId = "home";
-  const projectLinksFolder = data.explorer.projectLinksFolder;
-  const parentMap = {
-    [projectLinksFolder.id]: "projects"
+function buildProjectCard(project) {
+  return {
+    type: "project",
+    title: project.title,
+    category: project.category,
+    description: project.description,
+    technologies: project.technologies,
+    links: project.links || (project.link ? [project.link] : []),
+    media: project.media
   };
+}
 
-  function folderHTML(folder) {
-    return `
-      <div class="folder-hero">
-        <div>
-          <h2>${folder.title}</h2>
-          <p class="folder-summary">${folder.summary}</p>
-        </div>
-        <div class="folder-hero-card folder-hero-art folder-hero-art--${folder.artClass || "system"}" aria-hidden="true"></div>
+function buildHomeExplorerModel(data) {
+  const folders = data.explorer.folders.map((folder) => ({ ...folder }));
+  const recentProjects = data.projects.items.slice(0, data.explorer.recentProjectCount || 3).map(buildProjectCard);
+  const projectFolder = folders.find((folder) => folder.id === "projects");
+
+  if (projectFolder) {
+    projectFolder.cards = [
+      ...recentProjects,
+      {
+        type: "cta",
+        title: data.explorer.projectPageLink.label,
+        body: "Open the full project catalogue.",
+        items: [
+          {
+            label: data.explorer.projectPageLink.label,
+            href: data.explorer.projectPageLink.href,
+            external: data.explorer.projectPageLink.external
+          }
+        ]
+      }
+    ];
+  }
+
+  return {
+    title: "Home",
+    subtitle: "portfolio",
+    path: `${data.explorer.path}/home`,
+    backHref: null,
+    rootTitle: "Home",
+    rootSummary: "Open a folder to look around.",
+    rootArtClass: "home",
+    rootShort: "portfolio",
+    folders
+  };
+}
+
+function buildProjectsExplorerModel(data) {
+  return {
+    title: "Projects",
+    subtitle: "catalogue",
+    path: `${data.explorer.path}/projects`,
+    backHref: "index.html",
+    rootTitle: "Projects",
+    rootSummary: "Open a category folder.",
+    rootArtClass: "projects",
+    rootShort: "all folders",
+    folders: data.projects.categories.map((category) => ({
+      id: category.id,
+      label: category.label,
+      short: category.short,
+      title: category.label,
+      summary: category.summary,
+      artClass: category.artClass || "projects",
+      columns: 2,
+      cards: data.projects.items
+        .filter((project) => (project.categories || []).includes(category.id))
+        .map(buildProjectCard)
+    }))
+  };
+}
+
+function buildPostersExplorerModel(data) {
+  return {
+    title: "Posters",
+    subtitle: "archive",
+    path: `${data.explorer.path}/posters`,
+    backHref: "index.html",
+    rootTitle: "Posters",
+    rootSummary: "Open a folder.",
+    rootArtClass: "posters",
+    rootShort: "visual work",
+    folders: data.posters.folders.map((folder) => ({
+      ...folder,
+      columns: 2,
+      cards: data.posters.items
+        .slice(0, folder.limit || data.posters.items.length)
+        .map((poster) => ({
+          type: "poster",
+          title: poster.title,
+          caption: poster.caption,
+          image: poster.image
+        }))
+    }))
+  };
+}
+
+function breadcrumbForPath(model, foldersById, folderId) {
+  const segments = [model.path];
+  if (folderId !== ROOT_ID) {
+    const chain = [];
+    let current = foldersById.get(folderId);
+    while (current) {
+      chain.unshift(current.id);
+      current = current.parentId ? foldersById.get(current.parentId) : null;
+    }
+    segments.push(...chain);
+  }
+  return segments.join("/");
+}
+
+function topLevelFolders(model) {
+  return model.folders.filter((folder) => !folder.parentId);
+}
+
+function childFolders(model, parentId) {
+  return model.folders.filter((folder) => (folder.parentId || ROOT_ID) === parentId);
+}
+
+function folderTilesHTML(folders) {
+  return `
+    <div class="home-folder-grid">
+      ${folders.map((folder) => `
+        <button class="home-folder-card" type="button" data-folder-target="${folder.id}">
+          <span class="home-folder-card-icon home-folder-card-icon--${folder.artClass || "system"}" aria-hidden="true"></span>
+          <strong>${folder.label}</strong>
+          <span>${folder.short || folder.summary}</span>
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
+
+function folderViewHTML(folder, model) {
+  const nestedFolders = childFolders(model, folder.id);
+  return `
+    <div class="folder-hero">
+      <div>
+        <h2>${folder.title}</h2>
+        <p class="folder-summary">${folder.summary}</p>
       </div>
+      <div class="folder-hero-card folder-hero-art folder-hero-art--${folder.artClass || "system"}" aria-hidden="true"></div>
+    </div>
+    ${nestedFolders.length ? folderTilesHTML(nestedFolders) : ""}
+    ${folder.cards?.length ? `
       <div class="folder-grid ${folder.columns ? `columns-${folder.columns}` : "columns-2"}">
         ${folder.cards.map(sectionCard).join("")}
       </div>
-    `;
-  }
+    ` : ""}
+  `;
+}
 
-  function homeHTML() {
+function rootViewHTML(model) {
+  return `
+    <div class="folder-hero folder-hero--home">
+      <div>
+        <h2>${model.rootTitle}</h2>
+        <p class="folder-summary">${model.rootSummary}</p>
+      </div>
+      <div class="folder-hero-card folder-hero-art folder-hero-art--${model.rootArtClass || "home"}" aria-hidden="true"></div>
+    </div>
+    ${folderTilesHTML(topLevelFolders(model))}
+  `;
+}
+
+function renderSidebarTree(model, activeId, parentId = ROOT_ID, depth = 1) {
+  const folders = childFolders(model, parentId);
+  return folders.map((folder) => {
+    const classes = ["sidebar-item"];
+    if (depth > 1) classes.push("sidebar-item--child");
+    if (depth > 2) classes.push("sidebar-item--grandchild");
+    if (folder.id === activeId) classes.push("is-active");
+
     return `
-      <div class="folder-hero folder-hero--home">
-        <div>
-          <h2>Home</h2>
-          <p class="folder-summary">Open a folder to look around.</p>
-        </div>
-        <div class="folder-hero-card folder-hero-art folder-hero-art--home" aria-hidden="true"></div>
-      </div>
-      <div class="home-folder-grid">
-        ${folders.map((folder) => `
-          <button class="home-folder-card" type="button" data-folder-target="${folder.id}">
-            <span class="home-folder-card-icon home-folder-card-icon--${folder.artClass || "system"}" aria-hidden="true"></span>
-            <strong>${folder.label}</strong>
-            <span>${folder.short}</span>
-          </button>
-        `).join("")}
-      </div>
+      <button class="${classes.join(" ")}" type="button" data-folder-target="${folder.id}">
+        <span class="folder-dot ${depth > 2 ? "folder-dot--mini" : ""}" aria-hidden="true"></span>
+        <span>
+          <strong>${folder.label}</strong>
+          <span>${folder.short || folder.summary}</span>
+        </span>
+      </button>
+      ${renderSidebarTree(model, activeId, folder.id, depth + 1)}
     `;
-  }
+  }).join("");
+}
+
+function renderDolphin(root, model) {
+  if (!root) return;
+
+  const foldersById = new Map(model.folders.map((folder) => [folder.id, folder]));
+  let activeId = ROOT_ID;
+  let mobileActiveId = null;
 
   root.innerHTML = `
     <section class="explorer-window explorer-window--desktop">
@@ -233,52 +435,38 @@ function renderExplorer(data) {
         <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="window-title">
           <strong>Dolphin</strong>
-          <span>portfolio</span>
+          <span>${model.subtitle}</span>
         </div>
         <div class="window-tools">Harshit</div>
       </div>
       <div class="window-toolbar">
         <div class="toolbar-group">
-          <button class="toolbar-button" type="button" aria-label="Back" data-desktop-back hidden>←</button>
-          <button class="toolbar-button" type="button" aria-label="Forward">→</button>
-          <button class="toolbar-button" type="button" aria-label="Up">↑</button>
+          <button class="toolbar-button" type="button" aria-label="Back" data-desktop-back>←</button>
+          <button class="toolbar-button" type="button" aria-label="Folder">⌂</button>
+          <button class="toolbar-button" type="button" aria-label="View">▦</button>
         </div>
-        <div class="breadcrumb" data-breadcrumb>${data.explorer.path}/home</div>
-        <div class="toolbar-search">Search</div>
+        <div class="breadcrumb" data-breadcrumb>${model.path}</div>
+        <div class="toolbar-search">${model.title}</div>
       </div>
       <div class="window-body">
         <aside class="window-sidebar">
           <div class="sidebar-heading">Places</div>
           <div class="sidebar-group" data-sidebar-items></div>
         </aside>
-        <div class="window-content">
-          <div class="folder-strip" data-folder-strip></div>
-          <div data-folder-content></div>
-        </div>
+        <div class="window-content" data-folder-content></div>
       </div>
     </section>
-    <section class="mobile-explorer" aria-label="Mobile sections">
+    <section class="mobile-explorer" aria-label="${model.title}">
       <div class="mobile-window">
         <div class="mobile-window-top">
-          <button class="mobile-back" type="button" data-mobile-back hidden>← Back</button>
+          <button class="mobile-back" type="button" data-mobile-back>← Back</button>
           <div class="mobile-window-title">
             <strong>Dolphin</strong>
-            <span data-mobile-title>portfolio</span>
+            <span data-mobile-title>${model.subtitle}</span>
           </div>
         </div>
         <div class="mobile-window-body">
-          <div class="mobile-folder-list" data-mobile-list>
-            ${folders.map((folder) => `
-              <button class="mobile-folder-row" type="button" data-mobile-open="${folder.id}">
-                <span class="mobile-folder-icon mobile-folder-icon--${folder.artClass || "system"}" aria-hidden="true"></span>
-                <span class="mobile-folder-copy">
-                  <strong>${folder.label}</strong>
-                  <span>${folder.summary}</span>
-                </span>
-                <span class="mobile-folder-arrow" aria-hidden="true">open</span>
-              </button>
-            `).join("")}
-          </div>
+          <div class="mobile-folder-list" data-mobile-list></div>
           <div class="mobile-folder-detail" data-mobile-detail hidden></div>
         </div>
       </div>
@@ -287,122 +475,115 @@ function renderExplorer(data) {
 
   const sidebar = root.querySelector("[data-sidebar-items]");
   const content = root.querySelector("[data-folder-content]");
-  const strip = root.querySelector("[data-folder-strip]");
-  const desktopBack = root.querySelector("[data-desktop-back]");
   const breadcrumb = root.querySelector("[data-breadcrumb]");
+  const desktopBack = root.querySelector("[data-desktop-back]");
   const mobileList = root.querySelector("[data-mobile-list]");
   const mobileDetail = root.querySelector("[data-mobile-detail]");
   const mobileBack = root.querySelector("[data-mobile-back]");
   const mobileTitle = root.querySelector("[data-mobile-title]");
-  let activeId = homeId;
-  let mobileActiveId = null;
+
+  function parentIdOf(id) {
+    if (id === ROOT_ID) return null;
+    return foldersById.get(id)?.parentId || ROOT_ID;
+  }
 
   function renderSidebar() {
     sidebar.innerHTML = `
-      <button class="sidebar-item ${activeId === homeId ? "is-active" : ""}" type="button" data-folder-target="${homeId}">
+      <button class="sidebar-item ${activeId === ROOT_ID ? "is-active" : ""}" type="button" data-folder-target="${ROOT_ID}">
         <span class="folder-dot folder-dot--home" aria-hidden="true"></span>
         <span>
-          <strong>Home</strong>
-          <span>portfolio</span>
+          <strong>${model.title}</strong>
+          <span>${model.rootShort}</span>
         </span>
       </button>
-      ${folders.map((folder) => `
-      <button class="sidebar-item sidebar-item--child ${folder.id === activeId ? "is-active" : ""}" type="button" data-folder-target="${folder.id}">
-        <span class="folder-dot" aria-hidden="true"></span>
-        <span>
-          <strong>${folder.label}</strong>
-          <span>${folder.short}</span>
-        </span>
-      </button>
-      ${folder.id === "projects" ? `
-      <button class="sidebar-item sidebar-item--child sidebar-item--grandchild ${projectLinksFolder.id === activeId ? "is-active" : ""}" type="button" data-folder-target="${projectLinksFolder.id}">
-        <span class="folder-dot folder-dot--mini" aria-hidden="true"></span>
-        <span>
-          <strong>${projectLinksFolder.label}</strong>
-          <span>${projectLinksFolder.short}</span>
-        </span>
-      </button>` : ""}
-    `).join("")}
+      ${renderSidebarTree(model, activeId)}
     `;
   }
 
-  function renderStrip() {
-    if (activeId === homeId) {
-      strip.innerHTML = "";
-      strip.hidden = true;
+  function updateDesktopBackState() {
+    if (activeId === ROOT_ID && !model.backHref) {
+      desktopBack.hidden = true;
+      desktopBack.classList.remove("is-active");
       return;
     }
-    strip.hidden = true;
-    strip.innerHTML = "";
+    desktopBack.hidden = false;
+    desktopBack.classList.add("is-active");
   }
 
   function renderContent() {
-    if (activeId === homeId) {
-      content.innerHTML = homeHTML();
-      desktopBack.hidden = true;
-      desktopBack.classList.remove("is-active");
-      breadcrumb.textContent = `${data.explorer.path}/home`;
-      return;
-    }
-    const folder = allFolders.find((entry) => entry.id === activeId) || folders[0];
-    content.innerHTML = folderHTML(folder);
-    desktopBack.hidden = false;
-    desktopBack.classList.add("is-active");
-    breadcrumb.textContent = `${data.explorer.path}/home/${folder.id}`;
+    content.innerHTML = activeId === ROOT_ID
+      ? rootViewHTML(model)
+      : folderViewHTML(foldersById.get(activeId), model);
+    breadcrumb.textContent = breadcrumbForPath(model, foldersById, activeId);
+    updateDesktopBackState();
+    content.scrollTop = 0;
   }
 
   function activate(id) {
     activeId = id;
     renderSidebar();
-    renderStrip();
     renderContent();
   }
 
-  function getFolderById(id) {
-    return allFolders.find((entry) => entry.id === id) || folders[0];
+  function mobileListHTML() {
+    return topLevelFolders(model).map((folder) => `
+      <button class="mobile-folder-row" type="button" data-mobile-open="${folder.id}">
+        <span class="mobile-folder-icon mobile-folder-icon--${folder.artClass || "system"}" aria-hidden="true"></span>
+        <span class="mobile-folder-copy">
+          <strong>${folder.label}</strong>
+          <span>${folder.summary}</span>
+        </span>
+        <span class="mobile-folder-arrow" aria-hidden="true">open</span>
+      </button>
+    `).join("");
   }
 
-  function parentIdOf(id) {
-    return parentMap[id] || homeId;
+  function updateMobileBackState() {
+    if (mobileActiveId || model.backHref) {
+      mobileBack.hidden = false;
+      return;
+    }
+    mobileBack.hidden = true;
   }
 
-  function openMobileFolder(id) {
-    const folder = getFolderById(id);
-    mobileActiveId = folder.id;
-    mobileDetail.innerHTML = folderHTML(folder);
-    mobileList.hidden = true;
-    mobileDetail.hidden = false;
-    mobileBack.hidden = false;
-    mobileTitle.textContent = folder.label;
-  }
-
-  function showMobileHome() {
+  function showMobileRoot() {
     mobileActiveId = null;
     mobileList.hidden = false;
     mobileDetail.hidden = true;
-    mobileBack.hidden = true;
-    mobileTitle.textContent = "portfolio";
+    mobileTitle.textContent = model.subtitle;
+    mobileList.innerHTML = mobileListHTML();
+    updateMobileBackState();
+  }
+
+  function openMobileFolder(id) {
+    const folder = foldersById.get(id);
+    if (!folder) return;
+    mobileActiveId = id;
+    mobileList.hidden = true;
+    mobileDetail.hidden = false;
+    mobileTitle.textContent = folder.label;
+    mobileDetail.innerHTML = folderViewHTML(folder, model);
+    mobileDetail.scrollTop = 0;
+    updateMobileBackState();
   }
 
   renderSidebar();
-  renderStrip();
   renderContent();
+  showMobileRoot();
 
   root.addEventListener("click", (event) => {
-    const target = event.target.closest("[data-folder-target]");
-    if (target && root.contains(target)) {
-      const targetId = target.dataset.folderTarget;
+    const folderTarget = event.target.closest("[data-folder-target]");
+    if (folderTarget && root.contains(folderTarget)) {
+      const targetId = folderTarget.dataset.folderTarget;
       if (window.matchMedia("(max-width: 720px)").matches) {
-        openMobileFolder(targetId);
+        if (targetId === ROOT_ID) {
+          showMobileRoot();
+        } else {
+          openMobileFolder(targetId);
+        }
       } else {
         activate(targetId);
       }
-      return;
-    }
-
-    const backDesktop = event.target.closest("[data-desktop-back]");
-    if (backDesktop && root.contains(backDesktop)) {
-      activate(parentIdOf(activeId));
       return;
     }
 
@@ -412,74 +593,43 @@ function renderExplorer(data) {
       return;
     }
 
-    const back = event.target.closest("[data-mobile-back]");
-    if (!back || !root.contains(back)) return;
+    const desktopBackButton = event.target.closest("[data-desktop-back]");
+    if (desktopBackButton && root.contains(desktopBackButton)) {
+      if (activeId === ROOT_ID) {
+        if (model.backHref) window.location.href = model.backHref;
+        return;
+      }
+      activate(parentIdOf(activeId));
+      return;
+    }
+
+    const mobileBackButton = event.target.closest("[data-mobile-back]");
+    if (!mobileBackButton || !root.contains(mobileBackButton)) return;
     if (!mobileActiveId) {
-      showMobileHome();
+      if (model.backHref) window.location.href = model.backHref;
       return;
     }
     const parentId = parentIdOf(mobileActiveId);
-    if (parentId === homeId) {
-      showMobileHome();
+    if (parentId === ROOT_ID) {
+      showMobileRoot();
       return;
     }
     openMobileFolder(parentId);
   });
 }
 
-function renderPageHero(selector, title, text) {
-  setHTML(selector, `
-    <article class="page-header-card">
-      <h1>${title}</h1>
-      <p>${text}</p>
-    </article>
-  `);
-}
+function renderPageExplorer(data) {
+  const root = document.querySelector("[data-page-explorer]");
+  if (!root) return;
 
-function renderProjects(data) {
-  renderPageHero(
-    "[data-projects-hero]",
-    data.projects.pageTitle,
-    data.projects.pageIntro
-  );
+  if (page === "projects") {
+    renderDolphin(root, buildProjectsExplorerModel(data));
+    return;
+  }
 
-  setHTML("[data-project-gallery]", data.projects.items.map((project) => `
-    <article class="project-card">
-      <div class="project-card-visual" aria-hidden="true"></div>
-      <div class="project-card-body">
-        <h3>${project.title}</h3>
-        <p>${project.description}</p>
-        ${project.link ? `<div class="mini-links"><a class="mini-link" href="${project.link.href}" target="_blank" rel="noreferrer">${project.link.label}</a></div>` : ""}
-      </div>
-    </article>
-  `).join(""));
-
-  setHTML("[data-web-links]", data.projects.websites.map((site) => `
-    <a class="link-tile" href="${site.href}" target="_blank" rel="noreferrer">
-      <h3>${site.title}</h3>
-      <p>${site.description}</p>
-    </a>
-  `).join(""));
-}
-
-function renderPosters(data) {
-  renderPageHero(
-    "[data-posters-hero]",
-    data.posters.pageTitle,
-    data.posters.pageIntro
-  );
-
-  setHTML("[data-poster-gallery]", data.posters.items.map((poster) => `
-    <article class="poster-card">
-      <figure>
-        <img src="${poster.image}" alt="${poster.title}">
-        <figcaption>
-          <h3>${poster.title}</h3>
-          <p>${poster.caption}</p>
-        </figcaption>
-      </figure>
-    </article>
-  `).join(""));
+  if (page === "posters") {
+    renderDolphin(root, buildPostersExplorerModel(data));
+  }
 }
 
 loadSiteData()
@@ -490,11 +640,12 @@ loadSiteData()
 
     if (page === "home") {
       renderHomeIntro(data);
-      renderExplorer(data);
+      renderDolphin(document.querySelector("[data-home-workspace]"), buildHomeExplorerModel(data));
     }
 
-    if (page === "projects") renderProjects(data);
-    if (page === "posters") renderPosters(data);
+    if (page === "projects" || page === "posters") {
+      renderPageExplorer(data);
+    }
   })
   .catch((error) => {
     document.body.innerHTML = `<main style="padding:2rem;font-family:sans-serif;">${error.message}</main>`;

@@ -31,31 +31,11 @@
   "explorer": {
     "path": "/home/harshit/portfolio",
     "defaultFolder": "about",
-    "projectLinksFolder": {
-      "id": "weblinks",
-      "label": "Web Links",
-      "short": "live sites",
-      "title": "Web Links.",
-      "summary": "Live websites and web stuff.",
-      "artClass": "web",
-      "columns": 2,
-      "cards": [
-        {
-          "type": "links",
-          "title": "Websites",
-          "body": "",
-          "items": [
-            { "label": "NUS GPA Calculator", "href": "https://gpa-calculator.harshitsri.com", "external": true },
-            { "label": "Crime Detective", "href": "https://detective.harshitsri.com", "external": true },
-            { "label": "UniQuest Website", "href": "https://uniquest.harshitsri.com", "external": true }
-          ]
-        },
-        {
-          "type": "text",
-          "title": "Stack",
-          "body": "React, Next.js, Node, Supabase, Firebase."
-        }
-      ]
+    "recentProjectCount": 3,
+    "projectPageLink": {
+      "label": "See all projects",
+      "href": "projects.html",
+      "external": false
     },
     "folders": [
       {
@@ -89,32 +69,7 @@
         "summary": "Mostly systems work. Sometimes not.",
         "artClass": "projects",
         "columns": 2,
-        "cards": [
-          {
-            "type": "folderlink",
-            "title": "Web Links",
-            "body": "Live websites and web stuff.",
-            "targetId": "weblinks"
-          },
-          {
-            "type": "text",
-            "title": "Galassia-5",
-            "body": "SpaceWire simulator for early CubeSat validation.",
-            "tags": ["FPGA", "Linux", "SpaceWire"]
-          },
-          {
-            "type": "text",
-            "title": "UniQuest",
-            "body": "NUS-themed platformer built during Orbital.",
-            "tags": ["Godot", "Game"]
-          },
-          {
-            "type": "text",
-            "title": "Robotics / embedded",
-            "body": "Microcontrollers, sensors, actuators, debugging.",
-            "tags": ["C/C++", "ROS 2", "Arduino"]
-          }
-        ]
+        "cards": []
       },
       {
         "id": "posters",
@@ -144,62 +99,145 @@
     ]
   },
   "projects": {
-    "pageTitle": "Projects.",
-    "pageIntro": "A few selected builds.",
+    "categories": [
+      { "id": "hardware", "label": "Hardware", "short": "boards + firmware", "summary": "Boards, firmware, digital logic, and sensors.", "artClass": "system" },
+      { "id": "robotics", "label": "Robotics", "short": "autonomy stuff", "summary": "Autonomy, navigation, control, and robot systems.", "artClass": "projects" },
+      { "id": "satellite", "label": "Satellite", "short": "space systems", "summary": "CubeSat integration, interfaces, and mission-path validation.", "artClass": "system" },
+      { "id": "software", "label": "Software", "short": "apps + tools", "summary": "CLI tools, bots, and software-heavy builds.", "artClass": "web" },
+      { "id": "websites", "label": "Websites", "short": "live on web", "summary": "Browser-based tools, sites, and interactive experiments.", "artClass": "web" },
+      { "id": "games", "label": "Games", "short": "playable work", "summary": "Interactive game projects and playful interfaces.", "artClass": "projects" }
+    ],
     "items": [
       {
         "title": "Galassia-5 SpaceWire Simulator",
         "category": "Satellite Systems",
+        "categories": ["hardware", "satellite"],
         "description": "Early SpaceWire validation for CubeSat integration.",
         "technologies": ["FPGA", "Verilog", "Vivado", "Vitis", "Linux", "Python", "SpaceWire"]
       },
       {
+        "title": "FallSense",
+        "category": "Embedded Systems",
+        "categories": ["hardware"],
+        "description": "STM32 wearable fall-detection device with filtered IMU data and NFC export to a phone dashboard.",
+        "technologies": ["STM32", "C", "ARM Assembly", "IMU", "NFC"]
+      },
+      {
+        "title": "CuddleCare",
+        "category": "Software Engineering",
+        "categories": ["software"],
+        "description": "Java CLI app for pet care tracking with command-based architecture and strong validation.",
+        "technologies": ["Java", "JUnit", "CLI", "UML"]
+      },
+      {
+        "title": "K-Map Simplifier",
+        "category": "FPGA / Digital Logic",
+        "categories": ["hardware"],
+        "description": "Basys3 FPGA tool for K-Map input, Boolean simplification, and logic-circuit display.",
+        "technologies": ["Verilog", "Basys3", "OLED", "Digital Logic"]
+      },
+      {
         "title": "UniQuest",
         "category": "Game Development",
+        "categories": ["games", "websites", "software"],
         "description": "NUS-themed platformer with custom mechanics and touch controls.",
         "technologies": ["Godot", "Pixel art", "Android", "Web"],
-        "link": {
-          "label": "Open project",
-          "href": "https://uniquest.harshitsri.com"
-        }
+        "links": [
+          {
+            "label": "Website",
+            "href": "https://uniquest.harshitsri.com"
+          }
+        ]
       },
       {
-        "title": "Robotics and Embedded Builds",
+        "title": "Autonomous Search-and-Rescue Robot",
+        "category": "Robotics",
+        "categories": ["robotics", "hardware"],
+        "description": "TurtleBot3 rescue robot using ROS 2, SLAM, Nav2, and heat-target approach logic.",
+        "technologies": ["ROS 2", "TurtleBot3", "Nav2", "SLAM", "LiDAR"]
+      },
+      {
+        "title": "Maze-Navigating Robot",
         "category": "Embedded Systems",
-        "description": "Microcontrollers, sensors, actuators, debugging.",
-        "technologies": ["C", "C++", "Arduino", "ROS 2", "Linux"]
+        "categories": ["hardware", "robotics"],
+        "description": "Sensor-driven robot for maze navigation and color detection built in CG1111A.",
+        "technologies": ["Sensors", "Signal Processing", "Embedded C", "Robotics"]
       },
       {
-        "title": "Discord Bots",
-        "category": "Software",
-        "description": "Automation bots with JavaScript and APIs.",
-        "technologies": ["JavaScript", "Node.js", "Discord.js", "APIs"]
-      }
-    ],
-    "websites": [
+        "title": "Obstacle-Course Robot Car",
+        "category": "Embedded Systems",
+        "categories": ["hardware", "robotics"],
+        "description": "Arduino robot car that detects walls, throws a ball, and reverses on course completion.",
+        "technologies": ["Arduino", "C", "Sensors", "Actuators"]
+      },
+      {
+        "title": "Java CS",
+        "category": "Web Development",
+        "categories": ["software", "websites"],
+        "description": "Study resource site with curated ISC Computer Science Java solutions.",
+        "technologies": ["HTML", "JavaScript", "Java"]
+      },
+      {
+        "title": "Garuda",
+        "category": "Discord Bot",
+        "categories": ["software"],
+        "description": "Multi-purpose Discord bot with games, giveaways, greeting messages, and server utilities.",
+        "technologies": ["Node.js", "Discord.js", "JavaScript"],
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/HarshitSrivastavaHS/GARUDA"
+          }
+        ]
+      },
       {
         "title": "NUS GPA Calculator",
-        "type": "Utility Site",
+        "category": "Website",
+        "categories": ["websites", "software"],
         "description": "A fast GPA tool made for NUS students.",
-        "href": "https://gpa-calculator.harshitsri.com"
+        "technologies": ["React", "JavaScript", "Web"],
+        "links": [
+          {
+            "label": "Website",
+            "href": "https://gpa-calculator.harshitsri.com"
+          }
+        ]
       },
       {
         "title": "Crime Detective",
-        "type": "Interactive Web Project",
+        "category": "Interactive Website",
+        "categories": ["websites", "games", "software"],
         "description": "A browser-based detective experience for CFG Career Quest 2025.",
-        "href": "https://detective.harshitsri.com"
-      },
-      {
-        "title": "UniQuest Website",
-        "type": "Project Site",
-        "description": "Web home for the Orbital game project.",
-        "href": "https://uniquest.harshitsri.com"
+        "technologies": ["Web", "JavaScript", "Interactive Design"],
+        "links": [
+          {
+            "label": "Website",
+            "href": "https://detective.harshitsri.com"
+          }
+        ]
       }
     ]
   },
   "posters": {
-    "pageTitle": "Posters.",
-    "pageIntro": "A small visual archive.",
+    "folders": [
+      {
+        "id": "featured",
+        "label": "Featured",
+        "short": "few picks",
+        "title": "A few poster picks.",
+        "summary": "Selected visuals from project and student work.",
+        "artClass": "posters",
+        "limit": 2
+      },
+      {
+        "id": "archive",
+        "label": "Archive",
+        "short": "all posters",
+        "title": "Poster archive.",
+        "summary": "Everything in one place.",
+        "artClass": "posters"
+      }
+    ],
     "items": [
       {
         "title": "Poster 01",

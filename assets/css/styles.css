@@ -500,6 +500,7 @@ button {
 .window-body {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
+  height: 640px;
   min-height: 640px;
 }
 
@@ -507,6 +508,9 @@ button {
   padding: 1rem;
   background: var(--bg-2);
   border-right: 3px solid var(--line);
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow) #fff7cf;
 }
 
 .sidebar-heading {
@@ -608,6 +612,34 @@ button {
   background:
     radial-gradient(circle at 88% 14%, rgba(255, 216, 107, 0.45), transparent 12rem),
     var(--white);
+  overflow: auto;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow) #fff7cf;
+}
+
+.window-sidebar::-webkit-scrollbar,
+.window-content::-webkit-scrollbar,
+.mobile-window-body::-webkit-scrollbar,
+.mobile-folder-detail::-webkit-scrollbar {
+  width: 12px;
+}
+
+.window-sidebar::-webkit-scrollbar-track,
+.window-content::-webkit-scrollbar-track,
+.mobile-window-body::-webkit-scrollbar-track,
+.mobile-folder-detail::-webkit-scrollbar-track {
+  background: #fff7cf;
+  border-left: 3px solid var(--line);
+}
+
+.window-sidebar::-webkit-scrollbar-thumb,
+.window-content::-webkit-scrollbar-thumb,
+.mobile-window-body::-webkit-scrollbar-thumb,
+.mobile-folder-detail::-webkit-scrollbar-thumb {
+  background: var(--yellow);
+  border: 3px solid var(--line);
+  border-radius: 999px;
 }
 
 .folder-strip {
@@ -895,6 +927,8 @@ button {
 .mobile-window-body {
   padding: 0.65rem;
   background: #fffaf2;
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow) #fff7cf;
 }
 
 .mobile-folder-list {
@@ -1171,6 +1205,46 @@ button {
   font-size: 0.92rem;
 }
 
+.list-card--cta {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+}
+
+.cta-illustration {
+  height: 150px;
+  border: 3px solid var(--line);
+  border-radius: 1.1rem;
+  background: linear-gradient(180deg, #dff0ff 0 44%, #fff7cf 44% 100%);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-illustration::before {
+  content: "";
+  position: absolute;
+  width: 4.5rem;
+  height: 3rem;
+  left: 1rem;
+  top: 1rem;
+  border: 3px solid var(--line);
+  border-radius: 0.85rem;
+  background: #fffdf8;
+}
+
+.cta-illustration::after {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 5.6rem;
+  height: 2rem;
+  border: 3px solid var(--line);
+  border-radius: 999px 999px 0 0;
+  background: #bfe6c8;
+}
+
 .page-header-card {
   padding: 1.15rem;
   border-radius: var(--radius-xl);
@@ -1213,6 +1287,13 @@ button {
   background:
     linear-gradient(180deg, #bfe6c8 0 42%, #7fc7ff 42% 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.project-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .project-card-visual::before {
@@ -1282,8 +1363,10 @@ button {
 }
 
 .link-tile {
+  display: grid;
   align-content: start;
   grid-template-columns: 1fr auto;
+  gap: 0.4rem 0.8rem;
 }
 
 .link-tile h3,
@@ -1318,6 +1401,36 @@ button {
 .poster-card h3,
 .list-card h3 {
   font-size: 1.1rem;
+}
+
+.project-card-body {
+  display: grid;
+  align-content: start;
+  gap: 0.45rem;
+}
+
+.project-card-body .mini-links,
+.project-skills {
+  margin-top: 0.65rem;
+}
+
+.project-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: 0.45rem 0.8rem;
+  border: 3px solid var(--line);
+  border-radius: 999px;
+  background: #fffdf8;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.82rem;
 }
 
 .project-card p,
@@ -1376,11 +1489,12 @@ button {
   .folder-strip {
     grid-template-columns: 1fr;
   }
+
 }
 
 @media (max-width: 720px) {
   .site-shell {
-    padding-bottom: 8.5rem;
+    padding-bottom: 9.75rem;
   }
 
   .topbar,
@@ -1507,15 +1621,15 @@ button {
   position: fixed;
   left: 0;
   top: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
   background: var(--burst-color);
   border: 2px solid rgba(31, 36, 48, 0.7);
   pointer-events: none;
   z-index: 9998;
   transform: translate(var(--burst-x), var(--burst-y));
-  animation: burst-float 700ms ease-out forwards;
+  animation: burst-float 820ms ease-out forwards;
 }
 
 @keyframes cursor-shift {
