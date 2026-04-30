@@ -1,33 +1,21 @@
-# Harshit Srivastava Portfolio
+# 👋 Hi there, I'm Harshit
 
-Static multi-page portfolio built for GitHub Pages.
+I'm a curious and creative Computer Engineering undergrad at NUS, currently exploring the worlds of full-stack development, game design, and AI. I enjoy building cool things, solving weird bugs, and occasionally sneaking some pixel art into my projects 🎮✨
 
-## Structure
+---
 
-- `index.html`: KDE-inspired home workspace with the Dolphin-style explorer
-- `projects.html`: project gallery and live links
-- `posters.html`: poster gallery
-- `assets/css/styles.css`: shared styling
-- `assets/js/site.js`: shared rendering logic
-- `data/site.json`: main editable content source
+## 🔧 Tech I Use & Like
+**Languages:** `Python` `C/C++` `JavaScript` `Java`  
+**Tools/Frameworks:** `React` `Next.js` `Tailwind` `Godot` `Firebase` `Supabase`  
+**Other Stuff:** `Linux` `Git` `Figma` `Kdenlive` `ElevenLabs`  
 
-## Editing content
+---
 
-Most updates should happen in `data/site.json`.
+## 📌 Quick Links
+- 🎨 [Portfolio Website](https://harshitsri.com)
+- 🧠 [Orbital Game](https://uniquest.harshitsri.com)
+- 💼 [LinkedIn](https://linkedin.com/in/hs-harshit)
 
-- Update landing-page copy in `profile`, `home`, and `explorer`
-- Add or remove explorer folders in `explorer.folders`
-- Add or remove projects in `projects.items` and `projects.websites`
-- Add or remove poster entries in `posters.items`
-- Update contact links in `contact`
-- Update navigation labels or targets in `navigation`
+---
 
-## Hosting
-
-This site is static and works on GitHub Pages without a build step.
-
-If you preview locally, use a simple local server so `fetch("data/site.json")` works. For example:
-
-```bash
-python3 -m http.server
-```
+> Always building. Always learning. Always down for chai and code. ☕
