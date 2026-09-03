@@ -1,26 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Harshit Srivastava</title>
-  <meta
-    name="description"
-    content="Selected projects by Harshit Srivastava across satellite systems, embedded engineering, interactive software, and web development."
-  >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Selected Projects — Harshit Srivastava</title>
+  <meta name="description" content="Selected embedded, FPGA, robotics, and software projects by Harshit Srivastava.">
+  <meta name="theme-color" content="#140f1f">
+  <link rel="canonical" href="https://www.harshitsri.com/projects.html">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body data-page="projects">
-  <div class="site-shell">
-    <header class="topbar" data-nav></header>
-    <main class="page-main">
-      <section class="workspace" data-page-explorer></section>
-    </main>
-    <footer class="kde-panel" data-footer></footer>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="wordmark" href="index.html" aria-label="Harshit Srivastava, home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 20h8m14 0h8M20 5v8m0 14v8"/><rect x="13" y="13" width="14" height="14" rx="3"/><circle cx="20" cy="20" r="2"/></svg><span>Harshit Srivastava</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle><span class="sr-only">Open menu</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Primary" data-nav><a href="index.html#experience">Experience</a><a href="index.html#work" aria-current="page">Work</a><a href="index.html#skills">Skills</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Harshit-Srivastava-Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main" class="subpage-main">
+    <section class="subpage-hero section-shell">
+      <p class="section-kicker">Project index</p>
+      <h1>Selected work,<br><span>in more detail.</span></h1>
+      <p>Projects across embedded firmware, digital logic, autonomous robotics, and software. Each entry focuses on what I worked on and how the system was put together.</p>
+    </section>
+    <section class="project-index section-shell" aria-label="Projects">
+      <article class="project-row" id="fall-detection">
+        <div class="project-row-meta"><span>01</span><time datetime="2026-02">Feb — Mar 2026</time></div>
+        <div class="project-row-title"><p>Embedded system</p><h2>Wearable fall detection device</h2></div>
+        <div class="project-row-detail"><p>Developed STM32 firmware in C to process accelerometer and gyroscope data for fall detection. I implemented a sliding-window moving average filter in assembly and integrated NFC-based data transfer for exporting stored data to a mobile dashboard.</p><div class="tech-row"><span>STM32</span><span>C</span><span>Assembly</span><span>IMU</span><span>NFC</span></div></div>
+      </article>
+      <article class="project-row" id="kmap">
+        <div class="project-row-meta"><span>02</span><time datetime="2025-10">Oct — Nov 2025</time></div>
+        <div class="project-row-title"><p>FPGA / digital logic</p><h2>K-Map simplifier &amp; visualiser</h2></div>
+        <div class="project-row-detail"><p>Designed an FPGA system for entering three-variable K-Maps and viewing Boolean expressions and logic circuits in real time. I built the input and visualisation logic, SOP/POS selection, canonical-expression generation, OLED rendering, and top-level integration of the team’s submodules.</p><div class="tech-row"><span>Verilog</span><span>FPGA</span><span>OLED</span><span>Digital logic</span></div></div>
+      </article>
+      <article class="project-row" id="rescue-robot">
+        <div class="project-row-meta"><span>03</span><time datetime="2025-01">Jan — Apr 2025</time></div>
+        <div class="project-row-title"><p>Autonomous robotics</p><h2>Search-and-rescue robot</h2></div>
+        <div class="project-row-detail"><p>Built a TurtleBot3 system that navigated an unknown maze and detected heat signatures. The system combined ROS 2 Humble, Nav2, SLAM, 2D LiDAR, IR sensing, A* path planning, and application logic that generated goals from detected heat sources.</p><div class="tech-row"><span>ROS 2</span><span>Nav2</span><span>SLAM</span><span>A*</span><span>LiDAR</span></div></div>
+      </article>
+      <article class="project-row" id="cuddlecare">
+        <div class="project-row-meta"><span>04</span><time datetime="2025-09">Sep — Nov 2025</time></div>
+        <div class="project-row-title"><p>Software engineering</p><h2>CuddleCare</h2></div>
+        <div class="project-row-detail"><p>Worked on a Java command-line pet-care system with a command-based architecture. I implemented core commands, defensive validation, structured logging, fault-tolerant storage handling, JUnit tests, UML diagrams, and sections of the user and developer documentation.</p><div class="tech-row"><span>Java</span><span>JUnit</span><span>CLI</span><span>UML</span></div></div>
+      </article>
+      <article class="project-row" id="uniquest">
+        <div class="project-row-meta"><span>05</span><time datetime="2025-05">May — Aug 2025</time></div>
+        <div class="project-row-title"><p>Game development</p><h2>UniQuest</h2></div>
+        <div class="project-row-detail"><p>Built a two-person NUS-themed platformer in Godot. I worked on character customisation, combat, collectables, progression, touch controls, and cross-platform deployment, while the team created the sprites, tilesheets, and music in-house.</p><div class="tech-row"><span>Godot</span><span>GDScript</span><span>Android</span><span>Web</span></div><a class="text-link" href="https://uniquest.harshitsri.com" target="_blank" rel="noreferrer">Play the web build <span aria-hidden="true">↗</span></a></div>
+      </article>
+      <article class="project-row" id="garuda">
+        <div class="project-row-meta"><span>06</span><time datetime="2020-11">Nov 2020 — Nov 2022</time></div>
+        <div class="project-row-title"><p>Software</p><h2>GARUDA Discord bot</h2></div>
+        <div class="project-row-detail"><p>Developed and maintained a Node.js and Discord.js bot with games, moderation tools, giveaways, greetings, and server utilities. Over two years, it grew to operate across more than 1,000 servers.</p><div class="tech-row"><span>Node.js</span><span>Discord.js</span><span>JavaScript</span></div><a class="text-link" href="https://github.com/HarshitSrivastavaHS/GARUDA" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a></div>
+      </article>
+    </section>
+    <section class="subpage-contact section-shell"><p class="section-kicker">Next</p><h2>Back to the system view.</h2><a class="button button-primary" href="index.html#work">Return to homepage <span aria-hidden="true">←</span></a></section>
+  </main>
+  <footer class="site-footer"><a class="wordmark" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 20h8m14 0h8M20 5v8m0 14v8"/><rect x="13" y="13" width="14" height="14" rx="3"/><circle cx="20" cy="20" r="2"/></svg><span>Harshit Srivastava</span></a><p>Computer Engineering · Embedded systems · Robotics</p><p>© <span data-year>2026</span></p></footer>
   <script src="assets/js/site.js" defer></script>
 </body>
 </html>

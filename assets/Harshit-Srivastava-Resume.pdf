@@ -1,0 +1,161 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 6817 >>
+stream
+0.08 0.06 0.12 rg BT /F2 20 Tf 1 0 0 1 45 744 Tm (Harshit Srivastava) Tj ET
+0.32 0.27 0.38 rg BT /F1 8.5 Tf 1 0 0 1 45 719 Tm (+65 8060 6485  |  harshit.srivastava@u.nus.edu  |  linkedin.com/in/hs-harshit/) Tj ET
+0.55 0.28 0.70 rg BT /F2 9 Tf 1 0 0 1 45 698 Tm (PROFILE) Tj ET
+0.86 0.82 0.90 RG 45 690 m 567 690 l S
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 681 Tm (Computer Engineering undergraduate at the National University of Singapore with experience in embedded) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 670 Tm (systems, robotics, FPGA design, and system integration.) Tj ET
+0.55 0.28 0.70 rg BT /F2 9 Tf 1 0 0 1 45 651 Tm (KEY SKILLS) Tj ET
+0.86 0.82 0.90 RG 45 643 m 567 643 l S
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 634 Tm (Programming: C, C++, Python, Java, JavaScript, GDScript, Verilog) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 621 Tm (Embedded and hardware: STM32, FreeRTOS, bare-metal microcontroller programming, CAN/FDCAN, UART, GPIO,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 610 Tm (timers/PWM, HIL testing, embedded debugging, hardware validation, PCB design, KiCad, FPGA, Arduino) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 597 Tm (Robotics and systems: ROS 2, Nav2, SLAM, autonomous navigation, system integration, sensor and actuator) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 586 Tm (interfacing) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 573 Tm (Software and test automation: Python test automation, Tkinter, pywebview, serial communication,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 562 Tm (automated hardware testing, HTML report generation, OOP, CLI applications, JUnit) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 549 Tm (Tools and platforms: Git, Linux \(EndeavourOS, Ubuntu\), KiCad, Godot Engine, LTspice) Tj ET
+0.55 0.28 0.70 rg BT /F2 9 Tf 1 0 0 1 45 530 Tm (EDUCATION) Tj ET
+0.86 0.82 0.90 RG 45 522 m 567 522 l S
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 513 Tm (National University of Singapore) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 513 Tm (Aug 2024 - Jul 2028) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 498 Tm (Bachelor of Engineering in Computer Engineering; Second Major in Innovation and Design Programme; GPA:) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 487 Tm (4.13 / 5.0) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 474 Tm (City Montessori School) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 474 Tm (Mar 2014 - Jul 2024) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 459 Tm (High School; Class 10: 98.40%; Class 12: 97.75%) Tj ET
+0.55 0.28 0.70 rg BT /F2 9 Tf 1 0 0 1 45 440 Tm (EXPERIENCE) Tj ET
+0.86 0.82 0.90 RG 45 432 m 567 432 l S
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 423 Tm (Embedded Systems Intern - LionsBot International) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 423 Tm (May 2026 - Jul 2026) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 408 Tm (- Architected and led development of a hardware-in-the-loop ECU test platform using STM32U585, C,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 397 Tm (  FreeRTOS, FDCAN, and Python/pywebview, emulating sensors, actuators, loads, current feedback, and) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 386 Tm (  pulse signals.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 373 Tm (- Automated approximately 20 end-to-end ECU validation cases, reducing execution from approximately 10) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 362 Tm (  minutes to under 1 minute, with an architecture designed to expand toward approximately 200 planned) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 351 Tm (  cases.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 338 Tm (- Developed a Python/Tkinter R5 RFS QC application for UART commands, response parsing, pass/fail) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 327 Tm (  evaluation, operator cross-verification, and traceable HTML reports.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 314 Tm (- Reduced RFS validation from approximately 15-20 minutes to approximately 2-5 minutes per unit across) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 303 Tm (  approximately 12-15 hardware components while retaining human verification for physical behaviours.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 290 Tm (- Deployed the QC workflow to the manufacturer in China for PCB-level and post-assembly testing,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 279 Tm (  supporting a planned initial production run of approximately 300 RFS units.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 266 Tm (- Designed, fabricated, and validated a two-layer KiCad interface PCB for a new RFS trolley system,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 255 Tm (  including schematic, component selection, layout, bring-up, rapid prototyping, and CAD/3D fit checks.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 242 Tm (- Analysed and simulated R5 robot PDB and ECU circuitry in LTspice, including fans, buffers,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 231 Tm (  opto-isolators, I2C level shifters, and interface circuits.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 218 Tm (Galassia-5 Satellite Programme - Skunkworks SBC Team Lead) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 218 Tm (Jan 2026 - Apr 2026) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 203 Tm (- Led the team designing an alternative onboard computer architecture and a COM Express Type 10 custom) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 192 Tm (  SBC/carrier PCB with power, I/O routing, and interface layout.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 179 Tm (- Performed system-level compute, FPGA, and peripheral trade studies under power, radiation, thermal,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 168 Tm (  and reliability constraints.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 155 Tm (- Coordinated weekly reviews with radio, payload, camera, and avionics teams and developed) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 144 Tm (  architecture, integration, and testing documentation.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 131 Tm (National University of Singapore - Teaching Assistant, CG2111A) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 131 Tm (Jan 2026 - Apr 2026) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 116 Tm (- Guided approximately 20 students through Arduino-based bare-metal microcontroller labs, C) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 105 Tm (  programming, register-level peripheral configuration, I/O, and debugging.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 92 Tm (- Graded lab and project work and clarified embedded systems, digital logic, and microcontroller) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 81 Tm (  concepts.) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 5932 >>
+stream
+0.08 0.06 0.12 rg
+BT /F2 8 Tf 45 768 Td (HARSHIT SRIVASTAVA  /  RESUME) Tj ET
+0.55 0.36 0.96 RG 45 760 m 567 760 l S
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 736 Tm (National University of Singapore - Teaching Assistant, CDE2310) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 736 Tm (Jan 2026 - Present) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 721 Tm (- Mentor students using ROS 2 on Ubuntu, including setup, packages, navigation-stack usage, build and) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 710 Tm (  launch issues, and workspace organisation.) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 697 Tm (- Grade assignments, presentations, and mission runs for 12 student teams.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 684 Tm (Society of Floating Solutions - Website and Social Media Manager) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 684 Tm (Jul 2025 - Present) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 669 Tm (- Maintain the organisation's website and coordinate programme information, announcements, and) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 658 Tm (  scheduled social content.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 645 Tm (NUS Bitscraps - Publicity Subcommittee Member) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 645 Tm (May 2025 - Present) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 630 Tm (- Design posters, promotional material, and branding elements, and maintain a dynamic website without) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 619 Tm (  frontend frameworks.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 606 Tm (Raffles Hall Developers - Web Designer and Developer) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 606 Tm (Aug 2024 - May 2025) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 591 Tm (- Worked with hall committees on production website components and structured UI/UX iterations.) Tj ET
+0.55 0.28 0.70 rg BT /F2 9 Tf 1 0 0 1 45 572 Tm (SELECTED PROJECTS) Tj ET
+0.86 0.82 0.90 RG 45 564 m 567 564 l S
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 555 Tm (Wearable Fall Detection Device - STM32 Embedded System) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 555 Tm (Feb 2026 - Mar 2026) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 540 Tm (- Developed STM32 C firmware for accelerometer and gyroscope fall detection, implemented a) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 529 Tm (  sliding-window moving average filter in assembly, and exported stored data to a mobile dashboard) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 518 Tm (  through NFC.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 505 Tm (CuddleCare - CLI Pet Care Management System) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 505 Tm (Sep 2025 - Nov 2025) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 490 Tm (- Built Java command parsing and validation flows, core commands, defensive validation, logging,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 479 Tm (  fault-tolerant storage, JUnit tests, UML diagrams, and substantial user and developer documentation.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 466 Tm (K-Map Simplifier and Visualiser - FPGA) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 466 Tm (Oct 2025 - Nov 2025) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 451 Tm (- Designed a real-time three-variable K-Map system with switch input, OLED and LED feedback, SOP/POS) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 440 Tm (  modes, canonical expression generation, modular rendering, and top-level team integration.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 427 Tm (UniQuest - Game) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 427 Tm (May 2025 - Aug 2025) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 412 Tm (- Built a two-person NUS-themed Godot platformer with custom assets, character customisation, combat,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 401 Tm (  collectables, progression, touch controls, and Linux, Windows, Web, and Android builds.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 388 Tm (Autonomous Search-and-Rescue Robot - TurtleBot3) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 388 Tm (Jan 2025 - Apr 2025) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 373 Tm (- Integrated ROS 2 Humble, Nav2, SLAM, A* planning, 2D LiDAR, and IR heat sensing for autonomous) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 362 Tm (  navigation and heat-source goal generation in an unknown maze.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 349 Tm (JavaCS - Website) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 349 Tm (Jul 2023 - Oct 2023) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 334 Tm (- Developed an educational site curating ISC Computer Science Java solutions by year and topic using) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 323 Tm (  HTML, JavaScript, and Java examples.) Tj ET
+0.08 0.06 0.12 rg BT /F2 10 Tf 1 0 0 1 45 310 Tm (GARUDA - Discord Bot) Tj ET
+0.36 0.31 0.42 rg BT /F1 8 Tf 1 0 0 1 430 310 Tm (Nov 2020 - Nov 2022) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 295 Tm (- Developed and maintained a Node.js and Discord.js bot with games, moderation, giveaways, greetings,) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 56 284 Tm (  and utilities that operated across more than 1,000 servers.) Tj ET
+0.55 0.28 0.70 rg BT /F2 9 Tf 1 0 0 1 45 265 Tm (CERTIFICATIONS AND SERVICE) Tj ET
+0.86 0.82 0.90 RG 45 257 m 567 257 l S
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 248 Tm (Google Data Analytics Certification Programme; AI Singapore AI4I - Foundations in AI; Orbital - Apollo) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 237 Tm (11 \(Advanced\); Code Sprint - PSA Hackathon) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 224 Tm (Silver Homes volunteer, Feb 2026; RVC x RHDevs coding instructor for foundational HTML and CSS, Mar) Tj ET
+0.20 0.16 0.25 rg BT /F1 8.5 Tf 1 0 0 1 45 213 Tm (2025.) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000224 00000 n 
+0000000326 00000 n 
+0000007195 00000 n 
+0000007331 00000 n 
+0000013315 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+13451
+%%EOF

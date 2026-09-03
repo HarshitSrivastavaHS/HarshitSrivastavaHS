@@ -1,27 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harshit Srivastava | Portfolio</title>
-  <meta
-    name="description"
-    content="Harshit Srivastava builds embedded, robotic, satellite, and web systems. Presented as a KDE-inspired portfolio workspace."
-  >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Harshit Srivastava — Computer Engineering</title>
+  <meta name="description" content="Harshit Srivastava is a Computer Engineering undergraduate at NUS working across embedded systems, robotics, electronics, FPGA design, and engineering software.">
+  <meta name="theme-color" content="#140f1f">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.harshitsri.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.harshitsri.com/">
+  <meta property="og:title" content="Harshit Srivastava — Computer Engineering">
+  <meta property="og:description" content="Embedded systems, robotics, electronics, FPGA design, and the software around them.">
+  <meta property="og:image" content="https://www.harshitsri.com/images/social-preview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Harshit Srivastava — Computer Engineering">
+  <meta name="twitter:description" content="Embedded systems, robotics, electronics, FPGA design, and the software around them.">
+  <meta name="twitter:image" content="https://www.harshitsri.com/images/social-preview.png">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body data-page="home">
-  <div class="site-shell">
-    <header class="topbar" data-nav></header>
-    <main class="workspace-main">
-      <section class="workspace-intro" data-home-intro></section>
-      <section class="workspace" data-home-workspace></section>
-    </main>
-    <footer class="kde-panel" data-footer></footer>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#home" aria-label="Harshit Srivastava, home">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M5 20h8m14 0h8M20 5v8m0 14v8"/>
+        <rect x="13" y="13" width="14" height="14" rx="3"/>
+        <circle cx="20" cy="20" r="2"/>
+      </svg>
+      <span>Harshit Srivastava</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+      <span class="sr-only">Open menu</span>
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav class="site-nav" id="primary-nav" aria-label="Primary" data-nav>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-resume" href="assets/Harshit-Srivastava-Resume.pdf">Resume <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <aside class="progress-rail" aria-label="Page sections" data-progress-rail>
+    <span class="progress-line"><span data-progress-fill></span></span>
+    <a href="#home" data-section-link="home"><span>01</span><b>Home</b></a>
+    <a href="#experience" data-section-link="experience"><span>02</span><b>Experience</b></a>
+    <a href="#work" data-section-link="work"><span>03</span><b>Work</b></a>
+    <a href="#skills" data-section-link="skills"><span>04</span><b>Skills</b></a>
+    <a href="#about" data-section-link="about"><span>05</span><b>About</b></a>
+    <a href="#contact" data-section-link="contact"><span>06</span><b>Contact</b></a>
+  </aside>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title" data-observe-section>
+      <div class="hero-atmosphere" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="section-kicker">Computer Engineering @ NUS</p>
+        <h1 id="hero-title">Harshit<br><span>Srivastava.</span></h1>
+        <p class="hero-intro">I work on embedded systems, robotics, electronics, and the software used to build and test them.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">See selected work <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="assets/Harshit-Srivastava-Resume.pdf">Open résumé <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="domain-list" role="group" aria-label="Technical areas">
+          <button type="button" data-domain="embedded" aria-pressed="true">Embedded systems</button>
+          <button type="button" data-domain="robotics" aria-pressed="false">Robotics</button>
+          <button type="button" data-domain="electronics" aria-pressed="false">Electronics</button>
+          <button type="button" data-domain="software" aria-pressed="false">Engineering software</button>
+        </div>
+      </div>
+
+      <div class="hero-system" data-hero-system>
+        <div class="system-caption"><span>System view</span><b data-system-label>Embedded systems</b></div>
+        <svg class="system-schematic" viewBox="0 0 760 640" role="img" aria-labelledby="schematic-title schematic-desc">
+          <title id="schematic-title">Connected embedded system schematic</title>
+          <desc id="schematic-desc">A stylised microcontroller connected to sensing, actuation, communication, robotics, and software tooling blocks.</desc>
+          <defs>
+            <linearGradient id="traceGradient" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <g class="schematic-grid" aria-hidden="true"><path d="M40 100H720M40 200H720M40 300H720M40 400H720M40 500H720"/><path d="M120 45V595M240 45V595M360 45V595M480 45V595M600 45V595"/></g>
+          <g class="trace-lines" aria-hidden="true"><path d="M176 161H268V240H310"/><path d="M450 240H540V157H587"/><path d="M380 314V420H226V474"/><path d="M450 280H606V421"/><path d="M310 276H112V358"/><path d="M415 206V114H510"/></g>
+          <g class="system-node domain-embedded is-active" data-system-node="embedded" transform="translate(310 206)"><rect width="140" height="108" rx="16"/><path class="node-detail" d="M20 28h100M20 52h64M20 76h84"/><text x="20" y="98">STM32 / MCU</text></g>
+          <g class="system-node domain-electronics" data-system-node="electronics" transform="translate(68 112)"><rect width="108" height="98" rx="14"/><circle class="node-detail" cx="31" cy="36" r="9"/><circle class="node-detail" cx="76" cy="36" r="9"/><path class="node-detail" d="M31 45v20h45V45"/><text x="18" y="84">SENSORS</text></g>
+          <g class="system-node domain-robotics" data-system-node="robotics" transform="translate(587 108)"><rect width="108" height="98" rx="14"/><path class="node-detail" d="M25 58h58l-8-28H33zM38 65v10m32-10v10"/><circle class="node-detail" cx="36" cy="78" r="8"/><circle class="node-detail" cx="73" cy="78" r="8"/><text x="20" y="22">ROBOT</text></g>
+          <g class="system-node domain-electronics" data-system-node="electronics" transform="translate(56 358)"><rect width="112" height="102" rx="14"/><path class="node-detail" d="M22 33h68M22 51h45M22 69h57"/><text x="18" y="90">PCB I/O</text></g>
+          <g class="system-node domain-software" data-system-node="software" transform="translate(148 474)"><rect width="156" height="92" rx="14"/><path class="node-detail" d="M24 25h108v42H24zM40 79h76"/><text x="32" y="54">TEST</text></g>
+          <g class="system-node domain-robotics" data-system-node="robotics" transform="translate(606 374)"><rect width="102" height="98" rx="14"/><path class="node-detail" d="M22 58c14-38 41-38 58 0M51 58v20"/><circle class="node-detail" cx="51" cy="34" r="7"/><text x="22" y="88">NAV2</text></g>
+          <g class="system-node domain-software" data-system-node="software" transform="translate(510 67)"><rect width="122" height="64" rx="14"/><path class="node-detail" d="M22 24h78M22 40h46"/><text x="22" y="57">PYTHON</text></g>
+          <g class="bus-labels" aria-hidden="true"><text x="190" y="145">GPIO / ADC</text><text x="462" y="222">FDCAN</text><text x="391" y="403">UART</text><text x="472" y="301">ROS 2</text></g>
+          <g class="signal-dots" aria-hidden="true"><circle r="5"><animateMotion dur="3.8s" repeatCount="indefinite" path="M176 161H268V240H310"/></circle><circle r="5"><animateMotion dur="4.3s" repeatCount="indefinite" path="M450 240H540V157H587"/></circle><circle r="5"><animateMotion dur="4.8s" repeatCount="indefinite" path="M380 314V420H226V474"/></circle></g>
+        </svg>
+        <div class="system-status" aria-hidden="true"><span></span>signal path active</div>
+      </div>
+      <a class="scroll-cue" href="#experience"><span>Scroll to follow the signal</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <section class="experience section-shell" id="experience" aria-labelledby="experience-title" data-observe-section>
+      <div class="section-heading">
+        <p class="section-kicker">02 / Experience</p>
+        <h2 id="experience-title">Working across the system.</h2>
+        <p>Firmware, test infrastructure, PCB work, system architecture, and the practical work of getting each layer to cooperate.</p>
+      </div>
+      <div class="experience-layout">
+        <div class="timeline-intro"><p class="mono-label">Selected experience</p><div class="timeline-track" aria-hidden="true"><span data-timeline-fill></span></div><p class="timeline-note">The common thread is integration: understanding the interfaces, building the tooling, and validating the whole system.</p></div>
+        <div class="experience-list">
+          <article class="experience-entry" data-experience-entry data-tags="embedded electronics software">
+            <div class="experience-meta"><time datetime="2026-05">May — Jul 2026</time><span>01</span></div>
+            <div class="experience-body"><p class="organization">LionsBot International</p><h3>Embedded Systems Intern</h3><ul><li>Architected and led development of an STM32U585 hardware-in-the-loop ECU test platform using C, FreeRTOS, FDCAN, and Python/pywebview.</li><li>Automated about 20 end-to-end validation cases, reducing execution from roughly 10 minutes to under one minute.</li><li>Built a production QC application for the R5 RFS and designed, fabricated, and validated a two-layer KiCad interface PCB for a new trolley system.</li></ul><div class="tech-row" role="group" aria-label="Technologies"><span>STM32U585</span><span>FreeRTOS</span><span>FDCAN</span><span>Python</span><span>KiCad</span><span>LTspice</span></div></div>
+          </article>
+          <article class="experience-entry" data-experience-entry data-tags="embedded electronics software">
+            <div class="experience-meta"><time datetime="2026-01">Jan — Apr 2026</time><span>02</span></div>
+            <div class="experience-body"><p class="organization">Galassia-5 Satellite Programme</p><h3>Skunkworks SBC Team Lead</h3><ul><li>Led the design of an alternative onboard computer architecture based on COM Express Type 10.</li><li>Worked through compute, FPGA, peripheral, power, radiation, thermal, and reliability trade-offs under mission constraints.</li><li>Coordinated interface reviews across radio, payload, camera, and avionics teams and documented the integration and test strategy.</li></ul><div class="tech-row" role="group" aria-label="Technical context"><span>COM Express</span><span>FPGA</span><span>PCB architecture</span><span>System integration</span></div></div>
+          </article>
+          <article class="experience-entry" data-experience-entry data-tags="embedded robotics software">
+            <div class="experience-meta"><time datetime="2026-01">Jan 2026 — Present</time><span>03</span></div>
+            <div class="experience-body"><p class="organization">National University of Singapore</p><h3>Teaching Assistant</h3><ul><li>Guided students through bare-metal Arduino labs, C programming, register-level peripheral configuration, I/O, and debugging for CG2111A.</li><li>Mentor students using ROS 2 on Ubuntu for CDE2310, including packages, build issues, launch problems, workspace organisation, and navigation-stack usage.</li></ul><div class="tech-row" role="group" aria-label="Technologies"><span>C</span><span>Arduino</span><span>ROS 2</span><span>Ubuntu</span><span>Nav2</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title" data-work-story data-observe-section>
+      <div class="work-header section-shell"><div class="section-heading compact"><p class="section-kicker">03 / Selected work</p><h2 id="work-title">Systems are more interesting when the layers meet.</h2></div><div class="work-instructions"><span data-work-count>01 / 04</span><p>Scroll vertically to move through the chapters.</p><a href="projects.html">Open project index <span aria-hidden="true">↗</span></a></div></div>
+      <div class="work-stage" data-work-stage><div class="work-track" data-work-track>
+        <article class="project-chapter project-fall" data-project data-tags="embedded software electronics">
+          <div class="project-copy"><div class="project-number"><span>01</span><i></i><b>Embedded system</b></div><h3>Wearable fall detection device</h3><p>Firmware for an STM32 wearable that processes accelerometer and gyroscope data, detects falls, and exports stored data to a mobile dashboard over NFC.</p><ul class="project-contributions"><li>Implemented sensor processing and fall-detection logic in C.</li><li>Wrote a sliding-window moving average filter in assembly.</li></ul><div class="tech-row"><span>STM32</span><span>C</span><span>Assembly</span><span>IMU</span><span>NFC</span></div></div>
+          <div class="project-visual" role="group" aria-label="Illustration of the fall-detection signal path"><svg viewBox="0 0 720 560" role="img" aria-label="IMU data passing through a filter and fall detector to NFC"><g class="diagram-grid"><path d="M0 80H720M0 180H720M0 280H720M0 380H720M0 480H720"/></g><path class="wave" d="M36 255c36 0 36-8 72-8s36 15 72 15 36-128 72-128 36 248 72 248 36-114 72-114 36 19 72 19"/><g class="diagram-block"><rect x="54" y="84" width="150" height="88" rx="13"/><text x="82" y="122">IMU</text><text class="small" x="82" y="148">ACCEL + GYRO</text></g><g class="diagram-block"><rect x="278" y="416" width="174" height="88" rx="13"/><text x="308" y="454">FILTER</text><text class="small" x="308" y="480">SLIDING WINDOW</text></g><g class="diagram-block accent"><rect x="502" y="82" width="164" height="100" rx="13"/><text x="532" y="123">NFC</text><text class="small" x="532" y="150">MOBILE EXPORT</text></g><path class="connector" d="M204 128h74v332M452 460h84V182"/></svg><p><span>Signal path</span> sensing → filtering → detection → export</p></div>
+        </article>
+        <article class="project-chapter project-kmap" data-project data-tags="embedded electronics">
+          <div class="project-copy"><div class="project-number"><span>02</span><i></i><b>FPGA / digital logic</b></div><h3>K-Map simplifier &amp; visualiser</h3><p>An interactive FPGA system for entering three-variable K-Maps and viewing Boolean expressions and logic circuits in real time.</p><ul class="project-contributions"><li>Built K-Map input, SOP/POS selection, and canonical-expression generation logic.</li><li>Integrated the OLED rendering pipeline and team submodules through the top-level controller.</li></ul><div class="tech-row"><span>Verilog</span><span>FPGA</span><span>OLED</span><span>Digital logic</span></div></div>
+          <div class="project-visual" role="group" aria-label="Illustration of the FPGA K-Map interface"><svg viewBox="0 0 720 560" role="img" aria-label="A three-variable Karnaugh map connected to an FPGA logic pipeline"><g class="kmap-grid"><rect x="64" y="90" width="300" height="260" rx="12"/><path d="M64 155h300M64 252h300M139 90v260M214 90v260M289 90v260"/><text x="90" y="132">AB \ C</text><text x="163" y="132">00</text><text x="238" y="132">01</text><text x="313" y="132">11</text><text class="bit hot" x="95" y="215">1</text><text class="bit" x="175" y="215">0</text><text class="bit hot" x="245" y="215">1</text><text class="bit" x="320" y="215">0</text><text class="bit" x="95" y="313">0</text><text class="bit hot" x="175" y="313">1</text><text class="bit hot" x="245" y="313">1</text><text class="bit" x="320" y="313">0</text></g><path class="connector" d="M364 220h76"/><g class="diagram-block accent"><rect x="440" y="164" width="216" height="116" rx="14"/><text x="474" y="207">FPGA</text><text class="small" x="474" y="237">TOP-LEVEL CONTROL</text><text class="small" x="474" y="258">OLED PIPELINE</text></g><text class="expression" x="82" y="430">F = A'B + BC</text><path class="logic" d="M454 394h40m0-24v48m0-24h46m0 0c18-25 42-25 58 0-16 25-40 25-58 0zm58 0h58"/></svg><p><span>Live pipeline</span> switches → K-Map → expression → display</p></div>
+        </article>
+        <article class="project-chapter project-robot" data-project data-tags="robotics software embedded">
+          <div class="project-copy"><div class="project-number"><span>03</span><i></i><b>Autonomous robotics</b></div><h3>Search-and-rescue robot</h3><p>A TurtleBot3 that maps an unknown maze, detects heat signatures, and plans routes toward detected targets without a pre-mapped environment.</p><ul class="project-contributions"><li>Integrated ROS 2 Humble, Nav2, SLAM, 2D LiDAR, and IR sensing.</li><li>Implemented A* path planning and application logic for heat-source goals.</li></ul><div class="tech-row"><span>ROS 2</span><span>Nav2</span><span>SLAM</span><span>A*</span><span>LiDAR</span></div></div>
+          <div class="project-visual" role="group" aria-label="Illustration of the robot navigation system"><svg viewBox="0 0 720 560" role="img" aria-label="A TurtleBot navigating a mapped maze toward a heat source"><g class="maze"><path d="M64 72v104h84V112h90v132H130v98h116v128M318 72v92h82v102h-88v84h94v120M486 72v98h112v90h-96v104h108v106"/></g><path class="route" d="M91 426C188 386 176 298 250 292s123-80 178-64 65 92 135 86"/><g class="robot" transform="translate(72 390)"><circle cx="44" cy="42" r="42"/><rect x="15" y="13" width="58" height="42" rx="12"/><circle cx="30" cy="34" r="5"/><circle cx="58" cy="34" r="5"/><path d="M21 68h46"/></g><g class="heat" transform="translate(560 277)"><circle r="35"/><path d="M0-22c18 20-6 24 7 39M-12-16c-16 17 7 24-4 35"/></g><g class="scan" transform="translate(116 432)"><path d="M0 0L198-142M0 0L243-58M0 0L164 30"/></g><text class="map-label" x="70" y="62">UNKNOWN MAP / LIVE SLAM</text></svg><p><span>Navigation loop</span> sense → map → plan → move</p></div>
+        </article>
+        <article class="project-chapter project-uniquest" data-project data-tags="software">
+          <div class="project-copy"><div class="project-number"><span>04</span><i></i><b>Game / software</b></div><h3>UniQuest</h3><p>A two-person NUS-themed platformer, built in Godot and shipped across Linux, Windows, Web, and Android.</p><ul class="project-contributions"><li>Implemented character customisation, combat, collectables, progression, and mobile touch controls.</li><li>Created custom sprites, tilesheets, and background music in-house.</li></ul><div class="tech-row"><span>Godot</span><span>GDScript</span><span>Android</span><span>Web</span></div><a class="text-link" href="https://uniquest.harshitsri.com" target="_blank" rel="noreferrer">Play the web build <span aria-hidden="true">↗</span></a></div>
+          <figure class="project-visual project-photo"><img src="images/3.png" alt="UniQuest project poster showing the character, core features, custom artwork, and NUS setting" loading="lazy" width="1587" height="2245"><figcaption><span>Project artifact</span> Milestone poster created for UniQuest</figcaption></figure>
+        </article>
+      </div></div>
+      <div class="work-progress section-shell" aria-hidden="true"><span data-work-progress></span></div>
+    </section>
+
+    <section class="skills section-shell" id="skills" aria-labelledby="skills-title" data-observe-section>
+      <div class="section-heading skills-heading"><p class="section-kicker">04 / Skills in context</p><h2 id="skills-title">Tools tied to work, not percentages.</h2><p>Hover, focus, or tap a tool to trace where it appears in the work above.</p></div>
+      <div class="skills-map">
+        <div class="skill-axis" aria-hidden="true"><span>Hardware</span><i></i><span>Software</span></div>
+        <div class="skill-group"><p>Embedded &amp; electronics</p><div class="skill-cloud"><button type="button" data-skill="embedded"><b>STM32</b><small>LionsBot · Fall device</small></button><button type="button" data-skill="embedded"><b>FreeRTOS</b><small>LionsBot HIL</small></button><button type="button" data-skill="embedded"><b>FDCAN</b><small>LionsBot HIL</small></button><button type="button" data-skill="electronics"><b>KiCad</b><small>LionsBot interface PCB</small></button><button type="button" data-skill="electronics"><b>Verilog / FPGA</b><small>K-Map · Galassia-5</small></button><button type="button" data-skill="electronics"><b>LTspice</b><small>LionsBot circuit analysis</small></button></div></div>
+        <div class="skill-group"><p>Robotics &amp; systems</p><div class="skill-cloud"><button type="button" data-skill="robotics"><b>ROS 2</b><small>Rescue robot · Teaching</small></button><button type="button" data-skill="robotics"><b>Nav2</b><small>Rescue robot · Teaching</small></button><button type="button" data-skill="robotics"><b>SLAM</b><small>Rescue robot</small></button><button type="button" data-skill="robotics"><b>System integration</b><small>Galassia-5 · Robotics</small></button></div></div>
+        <div class="skill-group"><p>Software &amp; tooling</p><div class="skill-cloud"><button type="button" data-skill="software"><b>C / C++</b><small>Firmware · Embedded labs</small></button><button type="button" data-skill="software"><b>Python</b><small>HIL · QC automation</small></button><button type="button" data-skill="software"><b>Java</b><small>CuddleCare</small></button><button type="button" data-skill="software"><b>Linux</b><small>ROS 2 · Development</small></button><button type="button" data-skill="software"><b>Git</b><small>Software projects</small></button></div></div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title" data-observe-section><div class="about-grid section-shell">
+      <div class="about-statement"><p class="section-kicker">05 / About</p><h2 id="about-title">I like projects that make me move between layers.</h2></div>
+      <div class="about-copy"><p>I’m a Computer Engineering undergraduate at the National University of Singapore, also pursuing a second major in the Innovation and Design Programme.</p><p>Most of my work sits around embedded systems and robotics. I enjoy following a problem from a circuit or sensor, through firmware and communication, into the tooling that tests the finished system.</p><p>Outside that lane, I have built a Java CLI application, a cross-platform game, websites, and visual work for student organisations. The medium changes; I still care about making the result clear and usable.</p></div>
+      <div class="education-line"><div><span>2024 — 2028</span><b>National University of Singapore</b></div><p>B.Eng. Computer Engineering<br>Second Major in Innovation and Design</p></div>
+      <div class="outside-line"><p class="mono-label">Beyond engineering</p><p>I create publicity and web material with NUS Bitscraps, and have taught foundational HTML and CSS in a community outreach programme.</p><a class="text-link" href="posters.html">View visual work <span aria-hidden="true">→</span></a></div>
+    </div></section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title" data-observe-section><div class="contact-inner section-shell">
+      <p class="section-kicker">06 / Contact</p><h2 id="contact-title">Let’s talk about the work.</h2><p class="contact-copy">The most direct way to reach me is by email. You can also find my code, experience, and résumé below.</p>
+      <div class="contact-links"><a href="mailto:harshit.srivastava@u.nus.edu"><span>Email</span><b>harshit.srivastava@u.nus.edu</b><i aria-hidden="true">↗</i></a><a href="https://github.com/harshitsrivastavahs" target="_blank" rel="noreferrer"><span>GitHub</span><b>@harshitsrivastavahs</b><i aria-hidden="true">↗</i></a><a href="https://linkedin.com/in/hs-harshit/" target="_blank" rel="noreferrer"><span>LinkedIn</span><b>/in/hs-harshit</b><i aria-hidden="true">↗</i></a><a href="assets/Harshit-Srivastava-Resume.pdf" download><span>Résumé</span><b>Download PDF</b><i aria-hidden="true">↓</i></a></div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer"><a class="wordmark" href="#home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 20h8m14 0h8M20 5v8m0 14v8"/><rect x="13" y="13" width="14" height="14" rx="3"/><circle cx="20" cy="20" r="2"/></svg><span>Harshit Srivastava</span></a><p>Computer Engineering · Embedded systems · Robotics</p><p>© <span data-year>2026</span></p></footer>
   <script src="assets/js/site.js" defer></script>
 </body>
 </html>

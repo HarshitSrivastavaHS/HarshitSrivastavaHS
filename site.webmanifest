@@ -1,0 +1,16 @@
+{
+  "name": "Harshit Srivastava",
+  "short_name": "Harshit",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#140f1f",
+  "theme_color": "#140f1f",
+  "icons": [
+    {
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
