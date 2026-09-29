@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Harshit Srivastava — Résumé</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+  <main class="resume">
+    <section class="resume-page page-one">
+      <header class="resume-header">
+        <div><h1>Harshit Srivastava</h1><p>Computer Engineering · Embedded Systems · Robotics · Software</p></div>
+        <address><a href="tel:+6580606485">+65 8060 6485</a><a href="mailto:harshit.srivastava@u.nus.edu">harshit.srivastava@u.nus.edu</a><a href="https://www.harshitsri.com">harshitsri.com</a><a href="https://www.linkedin.com/in/hsharshit/">linkedin.com/in/hsharshit</a><a href="https://github.com/HarshitSrivastavaHS">github.com/HarshitSrivastavaHS</a></address>
+      </header>
+
+      <section class="summary"><p>Computer Engineering undergraduate at the National University of Singapore with hands-on experience in embedded systems, hardware validation, robotics, FPGA design, AI, and software engineering.</p></section>
+
+      <section><h2>Education</h2><div class="entry-heading"><div><h3>National University of Singapore</h3><p>B.Eng. Computer Engineering · Second Major, Innovation and Design Programme</p></div><div><b>Aug 2024—Jul 2028</b><span>GPA: 4.13 / 5.0</span></div></div><p class="coursework"><b>Relevant coursework:</b> Data Structures &amp; Algorithms; Software Engineering &amp; OOP; Digital Design; Computer Organization; Signals &amp; Systems; Introduction to Machine Learning. <b>Current:</b> Real-Time Operating Systems; Computer Architecture; Human-Robot Interaction; Guidance, Navigation &amp; Control.</p></section>
+
+      <section><h2>Technical Skills</h2><div class="skills-grid">
+        <p><b>Programming &amp; RTL</b><span>C, C++, Python, Java, JavaScript, GDScript, Verilog, ARM Thumb Assembly</span></p>
+        <p><b>Embedded &amp; hardware</b><span>STM32, ARM Cortex-M4, FreeRTOS, bare-metal firmware, CAN/FDCAN, UART, I²C, GPIO, timers/PWM, NFC/NDEF, HIL testing, PCB design, FPGA</span></p>
+        <p><b>Robotics &amp; AI</b><span>ROS 2, MuJoCo, Nav2, SLAM Toolbox, TurtleBot3, inverse kinematics, autonomous navigation, PyTorch, Hugging Face, OpenCV, vision-language models</span></p>
+        <p><b>Software &amp; tools</b><span>Node.js, Express, MongoDB, JUnit 5, Git, Docker, Linux, STM32CubeIDE, Vivado, Vitis, KiCad, LTspice, Godot 4, PlantUML</span></p>
+      </div></section>
+
+      <section><h2>Experience</h2>
+        <article><div class="entry-heading"><div><h3>Embedded Systems Intern</h3><p>LionsBot International</p></div><b>May—Jul 2026</b></div><ul>
+          <li>Architected and led development of a hardware-in-the-loop ECU test platform using STM32U585, C, FreeRTOS, FDCAN, and Python/pywebview to emulate sensors, actuators, loads, current feedback, and pulse signals.</li>
+          <li>Automated approximately 20 end-to-end validation cases, reducing execution from approximately 10 minutes to under 1 minute; designed the architecture to expand toward approximately 200 planned cases.</li>
+          <li>Independently developed a Python/Tkinter R5 RFS QC application for UART execution, response parsing, pass/fail evaluation, operator cross-verification, and traceable HTML reports.</li>
+          <li>Reduced RFS validation from approximately 15–20 minutes to approximately 2–5 minutes per unit across approximately 12–15 hardware components; deployed the workflow to the manufacturer in China.</li>
+          <li>Designed, fabricated, and validated a two-layer KiCad trolley-interface PCB, including component selection, layout, bring-up, rapid prototyping, and mechanical fit checks.</li>
+          <li>Analyzed and simulated robot PDB and ECU circuitry in LTspice, including fans, buffers, opto-isolators, I²C level shifters, and interface circuits.</li>
+        </ul></article>
+        <article><div class="entry-heading"><div><h3>Teaching Assistant</h3><p>National University of Singapore · CG2111A and CDE2310</p></div><b>Jan—Apr 2026</b></div><ul>
+          <li>Guided approximately 20 students through bare-metal Arduino labs, C, register-level peripheral configuration, I/O, and debugging; assessed lab and project work.</li>
+          <li>Mentored 12 student teams using ROS 2 on Ubuntu, including packages, workspace setup, Nav2 usage, build and launch troubleshooting, presentations, and mission runs.</li>
+        </ul></article>
+        <article><div class="entry-heading"><div><h3>Vice President, External</h3><p>NUS Bitscraps</p></div><b>May 2026—Present</b></div><ul><li>Oversee Publicity and Events for a sustainability-focused electronics repair club; coordinate event execution, promotion, registrations, member communication, website content, and external outreach.</li></ul></article>
+      </section>
+    </section>
+
+    <section class="resume-page page-two">
+      <header class="page-header"><span>Harshit Srivastava</span><b>Selected engineering work</b></header>
+      <section><h2>Selected Projects</h2>
+        <article><div class="entry-heading"><div><h3>Language-Guided Humanoid Manipulation System</h3><p>MuJoCo · Vision-Language AI · Robotics</p></div><b>Sep 2026—Present</b></div><ul>
+          <li>Built a Unitree G1 MuJoCo environment and integrated a local Qwen2.5-VL-7B model using PyTorch, Hugging Face Transformers, 4-bit NF4 quantization, Docker, and persistent model caching on an 8 GB NVIDIA GPU.</li>
+          <li>Combined vision-language grounding with OpenCV refinement, improving grounding accuracy from 54.2% to 91.7% across 24 trials; achieved 24/24 validated language-to-action planning outcomes.</li>
+          <li>Implemented inverse-kinematics motion, contact-aware grasping, object tracking, controlled release, recovery, and visual verification; completed 12/12 randomized manipulation trials with 3 cm mean placement error.</li>
+          <li>Built a live dashboard and reproducible evaluation framework for 20 randomized scenarios with JSONL evidence, system metrics, and 33 automated tests.</li>
+        </ul></article>
+        <article><div class="entry-heading"><div><h3>Vision-Language Model Adversarial Robustness Benchmark</h3><p>Qwen2.5-VL · PyTorch · OpenCV</p></div><b>Sep 2026—Present</b></div><ul>
+          <li>Built a deterministic 50-item A-OKVQA evaluation pipeline with pinned local inference, stable IDs, raw responses, hashes, manifests, environment metadata, and report-ready metrics.</li>
+          <li>Designed a visual prompt-injection attack that reduced accuracy from 90% to 76%, then an image-only defense that recovered all 8 successful attacks with 0 false detections across 50 clean images.</li>
+        </ul></article>
+        <article><div class="entry-heading"><div><h3>Wearable Fall Detection Device</h3><p>STM32L4S5 · C · ARM Thumb · NFC</p></div><b>Feb—Mar 2026</b></div><ul>
+          <li>Developed a five-state fall detector using accelerometer and gyroscope data, jitter rejection, timing thresholds, and a 10-second long-lie check.</li>
+          <li>Wrote a four-sample X/Y/Z moving-average filter in ARM Thumb assembly and exported fall count, uptime, and timestamps as NDEF URI data for a phone dashboard.</li>
+        </ul></article>
+        <article><div class="entry-heading"><div><h3>K-Map Simplifier and Visualiser</h3><p>Basys 3 FPGA · Verilog · OLED</p></div><b>Oct—Nov 2025</b></div><ul>
+          <li>Built switch-based truth-table input, SOP/POS modes, canonical-expression generation, reusable button conditioning, and mode-aware top-level integration.</li>
+          <li>Developed a 96×64 OLED pixel pipeline with a 5×7 character renderer, Gray-code K-Map, color themes, and dynamic cell highlighting.</li>
+        </ul></article>
+        <article><div class="entry-heading"><div><h3>Autonomous Search-and-Rescue Robot</h3><p>TurtleBot3 · ROS 2 · Nav2 · SLAM</p></div><b>Jan—Apr 2025</b></div><ul>
+          <li>Integrated SLAM Toolbox, Nav2, LiDAR, an AMG8833 thermal array, and GPIO/PWM actuation on a Raspberry Pi 4.</li>
+          <li>Extended frontier exploration to interrupt for heat detections, avoid handled locations, and resume navigation; tuned the physical robot and built isolated sensor/actuator test tools.</li>
+        </ul></article>
+        <article><div class="entry-heading"><div><h3>UniQuest</h3><p>Godot 4 · GDScript · Android · Web</p></div><b>May—Aug 2025</b></div><ul>
+          <li>Co-developed a two-person 2D platformer with reusable character state machines, combat, weapons, progression, touch controls, customization shaders, and cross-platform exports.</li>
+          <li>Built JSON persistence with migration support and GUT tests; created original pixel art, background music, and sound.</li>
+        </ul></article>
+      </section>
+      <section class="additional"><h2>Additional Work &amp; Credentials</h2><div class="two-col"><p><b>CuddleCare</b> — Java command architecture, parsing, Streams, defensive persistence, structured logging, JUnit 5, and PlantUML.</p><p><b>JavaCS</b> — Node.js/Express archive for 30 Java solutions with JSON-backed content, search, filters, and dynamic routes.</p><p><b>GARUDA</b> — Node.js/Discord.js bot with modular commands, MongoDB configuration, persistent giveaways, moderation, and community tools.</p><p><b>Certifications:</b> Google Data Analytics; AI Singapore AI4I Foundations in AI; Orbital Apollo 11 (Advanced); PSA Code Sprint.</p></div></section>
+      <footer class="resume-footer"><span>harshitsri.com</span><span>Page 2 / 2</span></footer>
+    </section>
+  </main>
+</body>
+</html>

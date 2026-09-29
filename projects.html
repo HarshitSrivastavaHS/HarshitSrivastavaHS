@@ -1,66 +1,420 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Selected Projects — Harshit Srivastava</title>
-  <meta name="description" content="Selected embedded, FPGA, robotics, and software projects by Harshit Srivastava.">
-  <meta name="theme-color" content="#140f1f">
+  <title>Projects — Harshit Srivastava</title>
+  <meta name="description" content="Selected embedded, robotics, FPGA, AI, and software projects by Harshit Srivastava.">
+  <meta name="theme-color" content="#160d1c">
   <link rel="canonical" href="https://www.harshitsri.com/projects.html">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta property="og:type" content="website"><meta property="og:title" content="Projects — Harshit Srivastava"><meta property="og:description" content="Robots, embedded devices, FPGA logic, AI, games, and the systems connecting them."><meta property="og:image" content="https://www.harshitsri.com/images/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Syne:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css"><script src="assets/js/site.js" defer></script>
 </head>
 <body data-page="projects">
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a><div class="page-wipe" aria-hidden="true"><span></span><span></span></div>
   <header class="site-header" data-header>
-    <a class="wordmark" href="index.html" aria-label="Harshit Srivastava, home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 20h8m14 0h8M20 5v8m0 14v8"/><rect x="13" y="13" width="14" height="14" rx="3"/><circle cx="20" cy="20" r="2"/></svg><span>Harshit Srivastava</span></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle><span class="sr-only">Open menu</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
-    <nav class="site-nav" id="primary-nav" aria-label="Primary" data-nav><a href="index.html#experience">Experience</a><a href="index.html#work" aria-current="page">Work</a><a href="index.html#skills">Skills</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Harshit-Srivastava-Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav>
+    <a class="wordmark" href="index.html" aria-label="Harshit Srivastava, home"><svg viewBox="0 0 48 32" aria-hidden="true"><path d="M4 4v24M4 16h15M19 4v24M29 9c0-4 3-6 7-6 3 0 6 1 8 3M29 23c2 4 6 6 10 6 4 0 7-2 7-6 0-9-17-4-17-14"/></svg><span>Harshit Srivastava</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle><span class="sr-only">Open menu</span><i></i><i></i></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Primary" data-nav><a href="projects.html">Projects</a><a href="about.html">About</a><a href="playground.html">Playground</a><a class="resume-link" href="assets/Harshit-Srivastava-Resume.pdf">Résumé <span aria-hidden="true">↗</span></a></nav>
   </header>
-  <main id="main" class="subpage-main">
-    <section class="subpage-hero section-shell">
-      <p class="section-kicker">Project index</p>
-      <h1>Selected work,<br><span>in more detail.</span></h1>
-      <p>Projects across embedded firmware, digital logic, autonomous robotics, and software. Each entry focuses on what I worked on and how the system was put together.</p>
+
+  <main id="main">
+    <header class="page-hero">
+      <div data-reveal><p class="eyebrow"><span>01</span> Projects</p><h1>Selected<br><em>projects.</em></h1></div>
+      <div class="page-hero-aside" data-reveal><p>Five projects with a closer look at what they do, what I worked on, and how the parts connect.</p><p class="mono">Featured projects ↓ · More work below</p></div>
+    </header>
+
+    <section class="project-story" aria-label="Featured projects">
+      <article class="project-scene" id="humanoid" data-scene>
+        <div class="project-sticky">
+          <div class="project-copy">
+            <div class="project-index-label"><span>01</span><i></i><b>Robotics + vision-language AI</b></div>
+            <h2>Language-guided humanoid manipulation</h2>
+            <p>A simulated Unitree G1 that turns varied language instructions into grounded, validated manipulation actions inside MuJoCo.</p>
+            <ul><li>Integrated a locally deployed Qwen2.5-VL-7B perception pipeline with OpenCV refinement.</li><li>Built structured planning, inverse-kinematics motion, contact-aware grasping, recovery, and visual verification.</li><li>Created reproducible scenario evaluation, JSONL evidence, and 33 automated tests.</li></ul>
+            <div class="tag-row"><span>MuJoCo</span><span>PyTorch</span><span>Qwen2.5-VL</span><span>OpenCV</span><span>Docker</span></div>
+          </div>
+          <figure class="diagram" aria-labelledby="humanoid-caption">
+            <svg viewBox="0 0 760 640" role="img" aria-label="Language instruction moves through vision, planning, humanoid control, and verification">
+              <g class="grid"><path d="M0 80h760M0 160h760M0 240h760M0 320h760M0 400h760M0 480h760M0 560h760M95 0v640M190 0v640M285 0v640M380 0v640M475 0v640M570 0v640M665 0v640"/></g>
+              <path class="wire" d="M96 128H275V202H370"/><path class="wire secondary" d="M486 202h112v134"/><path class="wire" d="M598 424v74H393"/><path class="wire secondary" d="M273 498H144v-94"/>
+              <g class="block active" data-phase transform="translate(42 82)"><rect width="150" height="92"/><text x="20" y="38">INSTRUCTION</text><text class="small" x="20" y="64">LANGUAGE INPUT</text></g>
+              <g class="block" data-phase transform="translate(274 150)"><rect width="212" height="106"/><text x="22" y="36">PERCEPTION</text><text class="small" x="22" y="62">QWEN2.5-VL + OPENCV</text><text class="small" x="22" y="82">GROUND OBJECT + SCENE</text></g>
+              <g class="block" data-phase transform="translate(520 336)"><circle cx="78" cy="78" r="76"/><path d="M43 82h70M54 55h48M57 107h42"/><text x="38" y="178">PLANNER</text></g>
+              <g class="block" data-phase transform="translate(273 446)"><rect width="240" height="104"/><text x="20" y="34">G1 CONTROL</text><text class="small" x="20" y="61">IK → REACH → GRASP</text><text class="small" x="20" y="80">TRANSPORT → RELEASE</text></g>
+              <g class="block" data-phase transform="translate(66 310)"><rect width="156" height="94"/><text x="18" y="36">VERIFY</text><text class="small" x="18" y="61">TRACK + INSPECT</text></g>
+              <circle class="signal" r="7"><animateMotion dur="4s" repeatCount="indefinite" path="M96 128H275V202H370"/></circle>
+            </svg>
+            <ol class="diagram-mobile" aria-label="Humanoid manipulation system flow">
+              <li><strong>Instruction</strong><span>A natural-language task enters the system.</span></li>
+              <li><strong>Perception</strong><span>Qwen2.5-VL and OpenCV ground the object and scene.</span></li>
+              <li><strong>Planner</strong><span>The grounded task becomes a manipulation plan.</span></li>
+              <li><strong>G1 control</strong><span>The humanoid reaches, grasps, transports, and releases.</span></li>
+              <li><strong>Verification</strong><span>The result is inspected and recorded as evidence.</span></li>
+            </ol>
+            <figcaption class="diagram-caption" id="humanoid-caption"><span>Closed-loop embodied workflow</span><b>Instruction → perception → action → evidence</b></figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="project-scene" id="fall-detection" data-scene>
+        <div class="project-sticky">
+          <div class="project-copy">
+            <div class="project-index-label"><span>02</span><i></i><b>Embedded system</b></div>
+            <h2>Wearable fall detection device</h2>
+            <p>Firmware for an STM32L4S5 wearable that classifies falls from accelerometer and gyroscope data, stores events, and exports them to a phone through NFC.</p>
+            <ul><li>Implemented a five-state detector with jitter rejection and a prolonged-inactivity check.</li><li>Wrote a four-sample X/Y/Z moving-average filter in ARM Thumb assembly.</li><li>Encoded fall count, uptime, and timestamps as an NDEF URI for the web dashboard.</li></ul>
+            <div class="tag-row"><span>STM32</span><span>C</span><span>ARM Thumb</span><span>IMU</span><span>NFC/NDEF</span></div>
+          </div>
+          <figure class="diagram fall-diagram" aria-labelledby="fall-caption">
+            <svg viewBox="0 0 760 640" role="img" aria-labelledby="fall-svg-title fall-svg-desc">
+              <title id="fall-svg-title">Wearable fall-detection firmware pipeline</title>
+              <desc id="fall-svg-desc">Accelerometer and gyroscope readings from the STM32L4S5 pass through a four-sample ARM Thumb moving-average filter and a five-state detector. Confirmed events store a count, uptime, and three timestamps before an NDEF URI is read by a phone over NFC.</desc>
+              <defs><marker id="fall-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0l6 3-6 3z"/></marker></defs>
+              <g class="fall-backdrop" aria-hidden="true"><path d="M0 30h218v25h226M0 596h186v-24h356v24h218M222 0v55M542 572v68"/><circle cx="218" cy="55" r="4"/><circle cx="542" cy="572" r="4"/></g>
+
+              <g class="fall-wires" aria-hidden="true">
+                <path class="fall-wire fall-wire-1" pathLength="1" marker-end="url(#fall-arrow)" d="M202 179h40"/>
+                <path class="fall-wire fall-wire-2" pathLength="1" marker-end="url(#fall-arrow)" d="M432 179h42"/>
+                <path class="fall-wire fall-wire-3" pathLength="1" marker-end="url(#fall-arrow)" d="M500 364v24H366v24"/>
+                <path class="fall-wire fall-wire-4" pathLength="1" marker-end="url(#fall-arrow)" d="M488 491h62"/>
+              </g>
+
+              <g class="fall-module fall-sensor" data-phase>
+                <rect class="fall-panel" x="32" y="72" width="170" height="214"/>
+                <text class="fall-heading" x="52" y="101">SENSOR INPUT</text>
+                <rect class="fall-chip" x="52" y="119" width="130" height="55" rx="4"/>
+                <text class="fall-chip-label" x="117" y="142">STM32L4S5</text>
+                <text class="fall-chip-meta" x="117" y="159">CORTEX-M4</text>
+                <g class="fall-axis" transform="translate(52 195)"><path d="M0 38V0M0 38h39M0 38l24-24"/><text x="-1" y="-7">Y</text><text x="44" y="42">X</text><text x="29" y="10">Z</text></g>
+                <path class="fall-wave" d="M108 204c9 0 9-17 18-17s9 34 18 34 9-23 18-23 9 13 18 13"/>
+                <text class="fall-meta" x="108" y="246">ACC X/Y/Z + GYRO</text>
+                <text class="fall-meta" x="52" y="269">BSP SENSOR DRIVERS</text>
+              </g>
+
+              <g class="fall-module fall-filter" data-phase>
+                <rect class="fall-panel" x="242" y="72" width="190" height="214"/>
+                <text class="fall-heading" x="262" y="101">MOVING AVERAGE</text>
+                <text class="fall-meta" x="262" y="120">X / Y / Z · FOUR SAMPLES</text>
+                <g class="fall-samples">
+                  <rect x="262" y="143" width="31" height="61"/><rect x="300" y="143" width="31" height="61"/><rect x="338" y="143" width="31" height="61"/><rect x="376" y="143" width="31" height="61"/>
+                  <path d="M268 180l7-10 6 13 6-22M306 177l7-8 6 11 6-16M344 181l7-12 6 15 6-19M382 176l7-7 6 9 6-13"/>
+                  <text x="277" y="220">t−3</text><text x="315" y="220">t−2</text><text x="353" y="220">t−1</text><text x="391" y="220">t</text>
+                </g>
+                <rect class="fall-assembly" x="262" y="240" width="145" height="27"/>
+                <text class="fall-assembly-label" x="334.5" y="258">ARM THUMB ASSEMBLY</text>
+              </g>
+
+              <g class="fall-module fall-detector" data-phase>
+                <rect class="fall-panel" x="474" y="40" width="254" height="324"/>
+                <text class="fall-heading" x="494" y="71">FIVE-STATE DETECTOR</text>
+                <g class="fall-state-wires" aria-hidden="true">
+                  <path class="fall-state-wire fall-state-wire-1" d="M562 120h66"/>
+                  <path class="fall-state-wire fall-state-wire-2" d="M672 120h32v88h-32"/>
+                  <path class="fall-state-wire fall-state-wire-3" d="M628 208h-66"/>
+                  <path class="fall-state-wire fall-state-wire-4" d="M518 208h-24v83h24"/>
+                </g>
+                <g class="fall-state fall-state-normal"><circle cx="540" cy="120" r="22"/><text x="540" y="124">01</text><text x="540" y="157">NORMAL</text></g>
+                <g class="fall-state fall-state-freefall"><circle cx="650" cy="120" r="22"/><text x="650" y="124">02</text><text x="650" y="157">FREE FALL</text></g>
+                <g class="fall-state fall-state-impact"><circle cx="650" cy="208" r="22"/><text x="650" y="212">03</text><text x="650" y="245">IMPACT</text></g>
+                <g class="fall-state fall-state-confirmed"><circle cx="540" cy="208" r="22"/><text x="540" y="212">04</text><text x="540" y="245">CONFIRMED</text></g>
+                <g class="fall-state fall-state-long"><circle cx="540" cy="291" r="22"/><text x="540" y="295">05</text><text x="540" y="328">10 s LONG-LIE</text></g>
+                <text class="fall-meta" x="494" y="345">TIMING THRESHOLDS + JITTER REJECTION</text>
+              </g>
+
+              <g class="fall-module fall-store" data-phase>
+                <rect class="fall-panel" x="244" y="412" width="244" height="150"/>
+                <text class="fall-heading" x="264" y="443">CONFIRMED EVENT</text>
+                <path class="fall-rule" d="M264 458h204"/>
+                <text class="fall-meta" x="264" y="483">FALL COUNT</text><text class="fall-value" x="448" y="483">+1</text>
+                <text class="fall-meta" x="264" y="508">DEVICE UPTIME</text><text class="fall-value" x="448" y="508">ms</text>
+                <text class="fall-meta" x="264" y="533">STORED TIMES</text><text class="fall-value" x="448" y="533">T1 · T2 · T3</text>
+              </g>
+
+              <g class="fall-module fall-phone" data-phase>
+                <rect class="fall-phone-body" x="550" y="392" width="144" height="184" rx="18"/>
+                <rect class="fall-phone-screen" x="565" y="410" width="114" height="132"/>
+                <g class="fall-nfc-symbol">
+                  <path class="fall-nfc fall-nfc-outer" d="M595 457c18-16 36-16 54 0"/>
+                  <path class="fall-nfc fall-nfc-middle" d="M603 467c13-10 25-10 38 0"/>
+                  <path class="fall-nfc fall-nfc-inner" d="M614 477c6-4 11-4 17 0"/>
+                  <circle class="fall-nfc-dot" cx="622.5" cy="485" r="3"/>
+                </g>
+                <text class="fall-heading" x="622" y="518">NDEF URI</text>
+                <text class="fall-meta" x="622" y="534">PHONE TAP</text>
+                <path class="fall-speaker" d="M606 558h32"/>
+              </g>
+            </svg>
+
+            <div class="fall-mobile" aria-label="Wearable fall-detection firmware pipeline">
+              <div class="fall-mobile-sensor"><span>IMU</span><b>ACC X/Y/Z</b><b>GYRO</b><small>STM32L4S5 · Cortex-M4</small></div>
+              <i aria-hidden="true"></i>
+              <div class="fall-mobile-filter"><span>4-sample moving average</span><div><b>t−3</b><b>t−2</b><b>t−1</b><b>t</b></div><small>ARM Thumb assembly</small></div>
+              <i aria-hidden="true"></i>
+              <div class="fall-mobile-states"><span>Five-state detector</span><ol><li>Normal</li><li>Free fall</li><li>Impact</li><li>Confirmed</li><li>10 s long-lie</li></ol><small>Timing thresholds · jitter rejection</small></div>
+              <i aria-hidden="true"></i>
+              <div class="fall-mobile-output"><div><span>Event record</span><b>Count · uptime · T1/T2/T3</b></div><strong aria-hidden="true"></strong><div><span>NDEF URI</span><b>Phone tap</b></div></div>
+            </div>
+            <figcaption class="diagram-caption" id="fall-caption"><b>IMU → filter → five-state detector → event record → NFC</b></figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="project-scene" id="rescue-robot" data-scene>
+        <div class="project-sticky">
+          <div class="project-copy">
+            <div class="project-index-label"><span>03</span><i></i><b>Autonomous robotics</b></div>
+            <h2>Search-and-rescue robot</h2>
+            <p>A TurtleBot3 system that maps an unknown maze, explores frontiers, interrupts navigation for heat detections, and resumes after handling a target.</p>
+            <ul><li>Integrated ROS 2 Humble, SLAM Toolbox, Nav2, LiDAR, an AMG8833 thermal array, and GPIO actuation.</li><li>Extended a frontier-exploration node to manage heat-source goals and avoid revisits.</li><li>Tuned the real robot’s navigation stack and built isolated sensor and actuator test utilities.</li></ul>
+            <div class="tag-row"><span>ROS 2</span><span>Nav2</span><span>SLAM</span><span>Raspberry Pi</span><span>Thermal sensing</span></div>
+          </div>
+          <figure class="diagram rescue-diagram" aria-labelledby="robot-caption">
+            <svg viewBox="0 0 760 640" role="img" aria-labelledby="rescue-svg-title rescue-svg-desc">
+              <title id="rescue-svg-title">Autonomous search-and-rescue control loop</title>
+              <desc id="rescue-svg-desc">A TurtleBot3 maps a maze with LiDAR and SLAM Toolbox, follows frontier goals through Nav2, interrupts exploration when the AMG8833 detects heat, actuates a launcher through GPIO and PWM, marks the handled location, and resumes exploration.</desc>
+              <defs>
+                <pattern id="rescue-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24"/></pattern>
+                <marker id="rescue-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0l6 3-6 3z"/></marker>
+              </defs>
+              <g class="rescue-map">
+                <rect class="rescue-map-panel" x="28" y="42" width="430" height="524"/>
+                <rect class="rescue-map-grid" x="46" y="82" width="394" height="458"/>
+                <text class="rescue-heading" x="48" y="68">SLAM TOOLBOX · OCCUPANCY GRID</text>
+                <g class="rescue-walls" aria-hidden="true"><path d="M70 106h150v72h-70M280 106h136M70 250h120v-48h70M386 226h30v98h-30M300 290h75M70 370h110v-55h40M395 370h21M70 440h42M195 522v-62h55M365 522h51"/></g>
+                <path class="rescue-route rescue-route-search" pathLength="1" d="M88 502C126 480 133 432 174 415S228 370 246 323 303 291 321 243 349 178 395 145"/>
+                <path class="rescue-route rescue-route-heat" pathLength="1" d="M321 243C280 250 262 270 266 307S312 350 350 354"/>
+                <path class="rescue-route rescue-route-resume" pathLength="1" d="M350 354C316 386 294 433 315 490s58 20 93-6"/>
+                <g class="rescue-frontier" aria-hidden="true"><rect x="376" y="126" width="40" height="40"/><path d="M396 119v54M369 146h54"/></g>
+                <g class="rescue-heat-target" aria-hidden="true" transform="translate(326 330)"><rect width="48" height="48"/><g class="rescue-heat-pixels"><rect x="6" y="6" width="8" height="8"/><rect x="16" y="6" width="8" height="8"/><rect x="26" y="6" width="8" height="8"/><rect x="36" y="6" width="6" height="8"/><rect x="6" y="16" width="8" height="8"/><rect x="16" y="16" width="8" height="8"/><rect x="26" y="16" width="8" height="8"/><rect x="36" y="16" width="6" height="8"/><rect x="6" y="26" width="8" height="8"/><rect x="16" y="26" width="8" height="8"/><rect x="26" y="26" width="8" height="8"/><rect x="36" y="26" width="6" height="8"/><rect x="6" y="36" width="8" height="6"/><rect x="16" y="36" width="8" height="6"/><rect x="26" y="36" width="8" height="6"/><rect x="36" y="36" width="6" height="6"/></g></g>
+                <g class="rescue-visited" aria-hidden="true"><circle cx="350" cy="354" r="31"/><path d="M336 340l28 28M364 340l-28 28"/></g>
+                <g class="rescue-robot" aria-hidden="true"><circle class="rescue-robot-range" r="24"/><rect x="-13" y="-11" width="26" height="22" rx="5"/><circle cx="-8" cy="12" r="4"/><circle cx="8" cy="12" r="4"/><path d="M-7-3h14M0-8v10"/></g>
+              </g>
+              <g class="rescue-links" aria-hidden="true">
+                <path class="rescue-link rescue-link-map" pathLength="1" marker-end="url(#rescue-arrow)" d="M458 132h34"/>
+                <path class="rescue-link rescue-link-goal" pathLength="1" marker-end="url(#rescue-arrow)" d="M492 176h-18v54h-16"/>
+                <path class="rescue-link rescue-link-thermal" pathLength="1" marker-end="url(#rescue-arrow)" d="M458 337h34"/>
+                <path class="rescue-link rescue-link-interrupt" pathLength="1" marker-end="url(#rescue-arrow)" d="M728 298h16V176h-16"/>
+                <path class="rescue-link rescue-link-launch" pathLength="1" marker-end="url(#rescue-arrow)" d="M610 410v22"/>
+              </g>
+              <g class="rescue-module rescue-nav"><rect x="492" y="48" width="236" height="152"/><text class="rescue-heading" x="512" y="76">FRONTIER EXPLORATION</text><text class="rescue-meta" x="512" y="101">MAP + ODOMETRY</text><text class="rescue-meta" x="512" y="124">SELECT UNVISITED FRONTIER</text><rect class="rescue-chip" x="512" y="143" width="88" height="31"/><text class="rescue-chip-text" x="556" y="163">NAV2 GOAL</text><rect class="rescue-chip" x="608" y="143" width="96" height="31"/><text class="rescue-chip-text" x="656" y="163">RASPBERRY PI 4</text></g>
+              <g class="rescue-module rescue-thermal"><rect x="492" y="220" width="236" height="190"/><text class="rescue-heading" x="512" y="248">AMG8833 · 8×8 THERMAL</text><g class="rescue-thermal-grid" transform="translate(512 270)"><rect x="0" y="0" width="13" height="13"/><rect x="16" y="0" width="13" height="13"/><rect x="32" y="0" width="13" height="13"/><rect x="48" y="0" width="13" height="13"/><rect x="0" y="16" width="13" height="13"/><rect x="16" y="16" width="13" height="13"/><rect x="32" y="16" width="13" height="13"/><rect x="48" y="16" width="13" height="13"/><rect x="0" y="32" width="13" height="13"/><rect x="16" y="32" width="13" height="13"/><rect x="32" y="32" width="13" height="13"/><rect x="48" y="32" width="13" height="13"/><rect x="0" y="48" width="13" height="13"/><rect x="16" y="48" width="13" height="13"/><rect x="32" y="48" width="13" height="13"/><rect x="48" y="48" width="13" height="13"/></g><text class="rescue-meta" x="594" y="282">AMBIENT-RELATIVE</text><text class="rescue-meta" x="594" y="302">PIXEL DISTRIBUTION</text><path class="rescue-rule" d="M512 344h192"/><text class="rescue-direction" x="512" y="369">LEFT</text><text class="rescue-direction" x="558" y="369">RIGHT</text><text class="rescue-direction" x="612" y="369">FORWARD</text><text class="rescue-direction" x="674" y="369">CONFIRMED</text><text class="rescue-meta" x="512" y="394">INTERRUPT NAVIGATION ON CONFIRMATION</text></g>
+              <g class="rescue-module rescue-launcher"><rect x="492" y="432" width="236" height="130"/><text class="rescue-heading" x="512" y="460">GPIO / PWM LAUNCHER</text><path class="rescue-launcher-body" d="M520 512h82l20-18v36l-20-18M537 512v27M585 512v27"/><path class="rescue-flare" d="M625 512h45"/><text class="rescue-meta" x="512" y="548">ACTUATE → MARK VISITED → RESUME</text></g>
+            </svg>
+            <div class="rescue-mobile" aria-label="Autonomous search-and-rescue control loop">
+              <div class="rescue-mobile-map"><span>SLAM occupancy grid</span><svg class="rescue-mobile-route" viewBox="0 0 320 224" preserveAspectRatio="none" aria-hidden="true"><path class="rescue-route rescue-route-search" pathLength="1" d="M48 189c37-2 62-23 96-23 22 0 31-16 46-34 12-15 22-27 34-37 17-13 32-17 48-30"/><path class="rescue-route rescue-route-heat" pathLength="1" d="M224 95c-30 8-38 27-35 52 18 0 34 8 51 9"/><path class="rescue-route rescue-route-resume" pathLength="1" d="M240 156c30-6 54-6 54 22s-2 16-2 16"/></svg><i class="wall-a"></i><i class="wall-b"></i><i class="wall-c"></i><i class="wall-d"></i><b class="robot-dot" aria-hidden="true"></b><em class="frontier-dot" aria-hidden="true"></em><strong class="heat-dot" aria-hidden="true"></strong></div>
+              <div class="rescue-mobile-stage"><span>Frontier node + Nav2</span><b>Map and odometry → unvisited goal</b></div>
+              <div class="rescue-mobile-stage"><span>AMG8833 thermal interrupt</span><b>Left · right · forward · confirmed</b></div>
+              <div class="rescue-mobile-stage"><span>GPIO/PWM launcher</span><b>Actuate → mark visited → resume</b></div>
+            </div>
+            <figcaption class="diagram-caption" id="robot-caption"><b>SLAM → frontier goal → thermal interrupt → actuation → resume</b></figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="project-scene" id="kmap" data-scene>
+        <div class="project-sticky">
+          <div class="project-copy">
+            <div class="project-index-label"><span>04</span><i></i><b>FPGA + digital logic</b></div>
+            <h2>K-Map simplifier and visualiser</h2>
+            <p>A Basys 3 FPGA interface for entering three-variable truth tables and moving between K-Maps, Boolean expressions, and gate diagrams in real time.</p>
+            <ul><li>Built switch input, SOP/POS selection, canonical-expression generation, and mode-aware control.</li><li>Created the 96×64 OLED pixel pipeline, reusable character renderer, themes, and cell highlighting.</li><li>Integrated independently developed submodules through the top-level design.</li></ul>
+            <div class="tag-row"><span>Verilog</span><span>Basys 3</span><span>OLED</span><span>SOP/POS</span><span>Vivado</span></div>
+          </div>
+          <figure class="diagram kmap-diagram" aria-labelledby="kmap-caption" data-kmap-animation data-kmap-state="0">
+            <svg viewBox="0 0 760 640" role="img" aria-label="An animated three-variable K-Map simplifier cycles through three truth-table inputs, flips the corresponding FPGA switches, groups adjacent ones or zeros, and displays minimized SOP and POS expressions on the OLED.">
+              <g class="kmap-backdrop" aria-hidden="true">
+                <path d="M0 112h220V84h54M0 584h220v-38h184v56h356M218 0v94h24M410 640v-82h28"/>
+                <path class="kmap-backdrop-accent" d="M0 34h118v18h94M548 0v24h188M736 584h24"/>
+                <circle cx="220" cy="84" r="4"/><circle cx="404" cy="546" r="4"/><circle cx="548" cy="24" r="4"/>
+                <g class="kmap-registration"><path d="M12 24h24M24 12v24M724 616h24M736 604v24"/><circle cx="24" cy="24" r="7"/><circle cx="736" cy="616" r="7"/></g>
+              </g>
+              <path class="kmap-flow-line" d="M198 284h24v-96h28"/><path class="kmap-flow-line" d="M325 238v62"/><path class="kmap-flow-line kmap-flow-accent" d="M400 365h24"/>
+
+              <g class="kmap-hardware">
+                <rect class="kmap-panel" x="24" y="54" width="174" height="492"/>
+                <text class="kmap-title" x="43" y="84">8 SWITCHES</text>
+                <text class="kmap-meta" x="43" y="105">TRUTH-TABLE INPUT</text>
+                <g class="kmap-phase" data-phase>
+                  <g class="kmap-switch" data-kmap-switch="0"><rect x="43" y="132" width="37" height="17" rx="8.5"/><circle cx="52" cy="140.5" r="6"/><text x="94" y="144">SW0</text><text class="kmap-meta" x="139" y="144" data-kmap-switch-value>m0 · 0</text></g>
+                  <g class="kmap-switch" data-kmap-switch="1"><rect x="43" y="178" width="37" height="17" rx="8.5"/><circle cx="52" cy="186.5" r="6"/><text x="94" y="190">SW1</text><text class="kmap-meta" x="139" y="190" data-kmap-switch-value>m1 · 0</text></g>
+                  <g class="kmap-switch is-on" data-kmap-switch="2"><rect x="43" y="224" width="37" height="17" rx="8.5"/><circle cx="52" cy="232.5" r="6"/><text x="94" y="236">SW2</text><text class="kmap-meta" x="139" y="236" data-kmap-switch-value>m2 · 1</text></g>
+                  <g class="kmap-switch is-on" data-kmap-switch="3"><rect x="43" y="270" width="37" height="17" rx="8.5"/><circle cx="52" cy="278.5" r="6"/><text x="94" y="282">SW3</text><text class="kmap-meta" x="139" y="282" data-kmap-switch-value>m3 · 1</text></g>
+                  <g class="kmap-switch" data-kmap-switch="4"><rect x="43" y="316" width="37" height="17" rx="8.5"/><circle cx="52" cy="324.5" r="6"/><text x="94" y="328">SW4</text><text class="kmap-meta" x="139" y="328" data-kmap-switch-value>m4 · 0</text></g>
+                  <g class="kmap-switch" data-kmap-switch="5"><rect x="43" y="362" width="37" height="17" rx="8.5"/><circle cx="52" cy="370.5" r="6"/><text x="94" y="374">SW5</text><text class="kmap-meta" x="139" y="374" data-kmap-switch-value>m5 · 0</text></g>
+                  <g class="kmap-switch" data-kmap-switch="6"><rect x="43" y="408" width="37" height="17" rx="8.5"/><circle cx="52" cy="416.5" r="6"/><text x="94" y="420">SW6</text><text class="kmap-meta" x="139" y="420" data-kmap-switch-value>m6 · 0</text></g>
+                  <g class="kmap-switch is-on" data-kmap-switch="7"><rect x="43" y="454" width="37" height="17" rx="8.5"/><circle cx="52" cy="462.5" r="6"/><text x="94" y="466">SW7</text><text class="kmap-meta" x="139" y="466" data-kmap-switch-value>m7 · 1</text></g>
+                </g>
+                <text class="kmap-meta" x="43" y="516">SWi MAPS DIRECTLY TO mi</text>
+              </g>
+
+              <g class="kmap-logic">
+                <rect class="kmap-panel" x="250" y="138" width="150" height="100"/>
+                <text class="kmap-title" x="270" y="174">TRUTH TABLE</text>
+                <text class="kmap-meta" x="270" y="199" data-kmap-canonical>Σm(2,3,7)</text>
+                <rect class="kmap-panel" x="250" y="300" width="150" height="130"/>
+                <text class="kmap-title" x="270" y="336">SIMPLIFIER</text>
+                <rect class="kmap-mode is-selected" data-kmap-mode="sop" x="270" y="358" width="44" height="26"/><text class="kmap-mode-text is-selected" data-kmap-mode="sop" x="281" y="376">SOP</text>
+                <rect class="kmap-mode" data-kmap-mode="pos" x="320" y="358" width="44" height="26"/><text class="kmap-mode-text" data-kmap-mode="pos" x="329" y="376">POS</text>
+                <text class="kmap-meta" x="270" y="407">MINIMIZED OUTPUT</text>
+              </g>
+
+              <g class="kmap-oled">
+                <rect class="kmap-oled-bezel" x="424" y="40" width="312" height="526"/>
+                <rect class="kmap-oled-screen" x="438" y="56" width="284" height="494"/>
+                <text class="kmap-oled-heading" x="455" y="86">96×64 OLED · K-MAP VIEW</text>
+                <text class="kmap-oled-axis" x="451" y="139">A \ BC</text>
+                <text class="kmap-oled-axis" x="496" y="139">00</text><text class="kmap-oled-axis" x="551" y="139">01</text><text class="kmap-oled-axis" x="606" y="139">11</text><text class="kmap-oled-axis" x="661" y="139">10</text>
+                <text class="kmap-oled-axis" x="453" y="187">A=0</text><text class="kmap-oled-axis" x="453" y="262">A=1</text>
+                <g class="kmap-cells kmap-phase" data-phase>
+                  <g class="kmap-cell" data-kmap-layout="desktop" data-minterm="0" data-value="0"><rect x="486" y="151" width="55" height="75"/><text class="kmap-minterm" x="492" y="166">m0</text><text class="kmap-value" x="509" y="202">0</text></g>
+                  <g class="kmap-cell" data-kmap-layout="desktop" data-minterm="1" data-value="0"><rect x="541" y="151" width="55" height="75"/><text class="kmap-minterm" x="547" y="166">m1</text><text class="kmap-value" x="564" y="202">0</text></g>
+                  <g class="kmap-cell is-one" data-kmap-layout="desktop" data-minterm="3" data-value="1"><rect x="596" y="151" width="55" height="75"/><text class="kmap-minterm" x="602" y="166">m3</text><text class="kmap-value" x="619" y="202">1</text></g>
+                  <g class="kmap-cell is-one" data-kmap-layout="desktop" data-minterm="2" data-value="1"><rect x="651" y="151" width="55" height="75"/><text class="kmap-minterm" x="657" y="166">m2</text><text class="kmap-value" x="674" y="202">1</text></g>
+                  <g class="kmap-cell" data-kmap-layout="desktop" data-minterm="4" data-value="0"><rect x="486" y="226" width="55" height="75"/><text class="kmap-minterm" x="492" y="241">m4</text><text class="kmap-value" x="509" y="277">0</text></g>
+                  <g class="kmap-cell" data-kmap-layout="desktop" data-minterm="5" data-value="0"><rect x="541" y="226" width="55" height="75"/><text class="kmap-minterm" x="547" y="241">m5</text><text class="kmap-value" x="564" y="277">0</text></g>
+                  <g class="kmap-cell is-one" data-kmap-layout="desktop" data-minterm="7" data-value="1"><rect x="596" y="226" width="55" height="75"/><text class="kmap-minterm" x="602" y="241">m7</text><text class="kmap-value" x="619" y="277">1</text></g>
+                  <g class="kmap-cell" data-kmap-layout="desktop" data-minterm="6" data-value="0"><rect x="651" y="226" width="55" height="75"/><text class="kmap-minterm" x="657" y="241">m6</text><text class="kmap-value" x="674" y="277">0</text></g>
+                </g>
+                <g class="kmap-example-group is-current" data-kmap-group-set="0">
+                  <g class="kmap-group kmap-group-ab"><rect x="600" y="155" width="102" height="67" rx="14" pathLength="1"/><text x="700" y="330">m2 + m3 → A′B</text></g>
+                  <g class="kmap-group kmap-group-bc"><rect x="600" y="155" width="47" height="142" rx="14" pathLength="1"/><text x="700" y="352">m3 + m7 → BC</text></g>
+                </g>
+                <g class="kmap-example-group" data-kmap-group-set="1">
+                  <g class="kmap-group kmap-group-ab"><rect x="600" y="155" width="102" height="142" rx="14" pathLength="1"/><text x="700" y="341">M2 · M3 · M6 · M7 → B′</text></g>
+                </g>
+                <g class="kmap-example-group" data-kmap-group-set="2">
+                  <g class="kmap-group kmap-group-bc kmap-wrap-group"><rect x="490" y="155" width="47" height="142" rx="14" pathLength="1"/><rect x="655" y="155" width="47" height="142" rx="14" pathLength="1"/><path d="M537 169c18 0 18 114 0 114M655 169c-18 0-18 114 0 114"/><text x="700" y="341">m0 + m2 + m4 + m6 → C′</text></g>
+                </g>
+                <g class="kmap-result kmap-phase" data-phase>
+                  <text class="kmap-expression" x="455" y="407" data-kmap-expression>F = A′B + BC</text>
+                  <path d="M455 427h246"/>
+                  <text class="kmap-oled-meta" x="455" y="455" data-kmap-summary>Σm(2,3,7) → TWO GROUPS → TWO TERMS</text>
+                </g>
+              </g>
+            </svg>
+
+            <p class="sr-only" aria-live="polite" data-kmap-live>Example 1: minterms 2, 3, and 7 simplify to A prime B plus BC.</p>
+
+            <div class="kmap-mobile" aria-label="Animated three-variable K-Map examples">
+              <div class="kmap-mobile-oled">
+                <p>96×64 OLED · K-MAP VIEW</p>
+                <div class="kmap-mobile-grid">
+                  <span class="kmap-axis-corner">A \ BC</span><span>00</span><span>01</span><span>11</span><span>10</span>
+                  <span class="kmap-row-label">A=0</span>
+                  <span class="kmap-mobile-cell" data-kmap-layout="mobile" data-minterm="0" data-value="0"><small>m0</small><b>0</b></span>
+                  <span class="kmap-mobile-cell" data-kmap-layout="mobile" data-minterm="1" data-value="0"><small>m1</small><b>0</b></span>
+                  <span class="kmap-mobile-cell is-one" data-kmap-layout="mobile" data-minterm="3" data-value="1"><small>m3</small><b>1</b></span>
+                  <span class="kmap-mobile-cell is-one" data-kmap-layout="mobile" data-minterm="2" data-value="1"><small>m2</small><b>1</b></span>
+                  <span class="kmap-row-label">A=1</span>
+                  <span class="kmap-mobile-cell" data-kmap-layout="mobile" data-minterm="4" data-value="0"><small>m4</small><b>0</b></span>
+                  <span class="kmap-mobile-cell" data-kmap-layout="mobile" data-minterm="5" data-value="0"><small>m5</small><b>0</b></span>
+                  <span class="kmap-mobile-cell is-one" data-kmap-layout="mobile" data-minterm="7" data-value="1"><small>m7</small><b>1</b></span>
+                  <span class="kmap-mobile-cell" data-kmap-layout="mobile" data-minterm="6" data-value="0"><small>m6</small><b>0</b></span>
+                  <span class="kmap-mobile-groups" aria-hidden="true">
+                    <span class="kmap-mobile-group-set is-current" data-kmap-mobile-group-set="0"><i class="kmap-mobile-group group-ab"></i><i class="kmap-mobile-group group-bc"></i></span>
+                    <span class="kmap-mobile-group-set" data-kmap-mobile-group-set="1"><i class="kmap-mobile-group group-bprime"></i></span>
+                    <span class="kmap-mobile-group-set" data-kmap-mobile-group-set="2"><i class="kmap-mobile-group group-cprime-left"></i><i class="kmap-mobile-group group-cprime-right"></i></span>
+                  </span>
+                </div>
+                <div class="kmap-mobile-legend"><span><i></i><b data-kmap-legend-primary>m2 + m3 → A′B</b></span><span><i></i><b data-kmap-legend-secondary>m3 + m7 → BC</b></span></div>
+                <p class="kmap-mobile-expression"><span data-kmap-mobile-expression>F = A′B + BC</span></p>
+              </div>
+              <ol class="kmap-mobile-flow" aria-label="K-Map simplification flow">
+                <li><b>01</b><span data-kmap-mobile-switches>SW2, SW3, SW7</span></li><li><b>02</b><span data-kmap-mobile-canonical>Σm(2,3,7)</span></li><li><b>03</b><span data-kmap-group-action>Group adjacent 1s</span></li><li><b>04</b><span>Render result</span></li>
+              </ol>
+            </div>
+            <figcaption class="diagram-caption" id="kmap-caption"><b>Switches → Gray-code map → minimize → OLED</b></figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="project-scene" id="uniquest" data-scene>
+        <div class="project-sticky">
+          <div class="project-copy">
+            <div class="project-index-label"><span>05</span><i></i><b>Game + creative software</b></div>
+            <h2>UniQuest</h2>
+            <p>A two-person NUS-themed platformer built in Godot 4, with original systems and assets across desktop, web, and Android.</p>
+            <ul><li>Designed reusable character state machines, combat, weapons, progression, and a global game manager.</li><li>Built JSON persistence with migration support, mobile controls, customization shaders, and automated GUT tests.</li><li>Created original game assets including pixel art, background music, and sound.</li></ul>
+            <div class="tag-row"><span>Godot 4</span><span>GDScript</span><span>GUT</span><span>Android</span><span>Web/PWA</span></div>
+            <p><a class="text-link" href="https://uniquest.harshitsri.com" target="_blank" rel="noreferrer">Play the web build <span aria-hidden="true">↗</span></a></p>
+          </div>
+          <figure class="diagram uniquest-diagram" aria-labelledby="uniquest-caption">
+            <svg viewBox="0 0 760 640" role="img" aria-labelledby="uniquest-svg-title uniquest-svg-desc">
+              <title id="uniquest-svg-title">UniQuest game architecture and runtime flow</title>
+              <desc id="uniquest-svg-desc">Keyboard or touchscreen input drives a reusable character state machine. Movement, combat, progression and scene systems update the global game manager, persist through a migration-aware JSON save, and ship to web, Android, Linux and Windows.</desc>
+              <defs><marker id="uniquest-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0l6 3-6 3z"/></marker></defs>
+              <g class="uniquest-level">
+                <rect class="uniquest-panel" x="28" y="42" width="444" height="320"/>
+                <text class="uniquest-heading" x="48" y="70">GODOT 4 · 2D LEVEL</text>
+                <text class="uniquest-meta" x="48" y="91">PLAYER + ENEMY ENTITIES SHARE THE CHARACTER BASE</text>
+                <path class="uniquest-horizon" d="M48 286h404"/>
+                <g class="uniquest-sky" aria-hidden="true"><circle cx="396" cy="112" r="31"/><path d="M48 260l72-72 54 54 62-92 92 110z"/></g>
+                <g class="uniquest-platforms" aria-hidden="true"><path d="M58 315h154M236 252h112M372 315h70"/><path class="uniquest-platform-under" d="M58 324h154M236 261h112M372 324h70"/></g>
+                <g class="uniquest-coin" aria-hidden="true"><circle cx="286" cy="211" r="12"/><path d="M286 202v18M281 205h7c6 0 6 6 0 6h-4c-6 0-6 6 0 6h7"/></g>
+                <g class="uniquest-enemy" aria-hidden="true" transform="translate(410 315)"><rect x="-13" y="-18" width="26" height="18"/><path d="M-18 0h36M-7-11h3M5-11h3"/></g>
+                <path class="uniquest-projectile" pathLength="1" d="M383 298h22"/>
+                <g class="uniquest-player" aria-hidden="true"><rect class="uniquest-player-body" x="-9" y="-18" width="18" height="18"/><rect class="uniquest-player-head" x="-7" y="-31" width="14" height="13"/><path d="M-5 0v8M5 0v8M-4-26h2M3-26h2M-12-13h24"/></g>
+              </g>
+
+              <g class="uniquest-fsm">
+                <rect class="uniquest-panel" x="28" y="384" width="444" height="174"/>
+                <text class="uniquest-heading" x="48" y="412">REUSABLE CHARACTER FSM</text>
+                <path class="uniquest-fsm-wire" d="M81 462H399"/>
+                <path class="uniquest-fsm-wire" d="M160 462v56h227"/>
+                <g class="uniquest-state uniquest-state-idle" transform="translate(81 462)"><circle r="22"/><text y="3">IDLE</text></g>
+                <g class="uniquest-state uniquest-state-run" transform="translate(160 462)"><circle r="22"/><text y="3">RUN</text></g>
+                <g class="uniquest-state uniquest-state-jump" transform="translate(240 462)"><circle r="22"/><text y="3">JUMP</text></g>
+                <g class="uniquest-state uniquest-state-fall" transform="translate(319 462)"><circle r="22"/><text y="3">FALL</text></g>
+                <g class="uniquest-state uniquest-state-attack" transform="translate(399 462)"><circle r="22"/><text y="3">ATTACK</text></g>
+                <g class="uniquest-state-small uniquest-state-dash" transform="translate(214 518)"><rect x="-29" y="-12" width="58" height="24"/><text y="3">DASH</text></g>
+                <g class="uniquest-state-small uniquest-state-glide" transform="translate(301 518)"><rect x="-29" y="-12" width="58" height="24"/><text y="3">GLIDE</text></g>
+                <g class="uniquest-state-small uniquest-state-death" transform="translate(388 518)"><rect x="-29" y="-12" width="58" height="24"/><text y="3">DEATH</text></g>
+              </g>
+
+              <g class="uniquest-links" aria-hidden="true">
+                <path class="uniquest-link uniquest-link-input" pathLength="1" marker-end="url(#uniquest-arrow)" d="M505 100h-17v102h-16"/>
+                <path class="uniquest-link uniquest-link-manager" pathLength="1" marker-end="url(#uniquest-arrow)" d="M472 286h33"/>
+                <path class="uniquest-link uniquest-link-save" pathLength="1" marker-end="url(#uniquest-arrow)" d="M617 326v22"/>
+                <path class="uniquest-link uniquest-link-export" pathLength="1" marker-end="url(#uniquest-arrow)" d="M617 468v20"/>
+              </g>
+
+              <g class="uniquest-module uniquest-input"><rect x="505" y="48" width="225" height="104"/><text class="uniquest-heading" x="524" y="76">CONTROL LAYER</text><rect class="uniquest-chip" x="524" y="98" width="82" height="29"/><text class="uniquest-chip-text" x="565" y="117">KEYBOARD</text><rect class="uniquest-chip" x="614" y="98" width="96" height="29"/><text class="uniquest-chip-text" x="662" y="117">TOUCHSCREEN</text></g>
+              <g class="uniquest-module uniquest-manager"><rect x="505" y="174" width="225" height="152"/><text class="uniquest-heading" x="524" y="202">GLOBAL GAME MANAGER</text><text class="uniquest-meta" x="524" y="229">SCENES · LEVELS · BOSSES</text><text class="uniquest-meta" x="524" y="252">COINS · ABILITY UNLOCKS</text><text class="uniquest-meta" x="524" y="275">GPA · HEALTH · DEATHS</text><path class="uniquest-rule" d="M524 294h186"/><text class="uniquest-manager-update" x="524" y="313">RUNTIME STATE UPDATED</text></g>
+              <g class="uniquest-module uniquest-save"><rect x="505" y="348" width="225" height="120"/><text class="uniquest-heading" x="524" y="376">JSON SAVE · FILEACCESS</text><text class="uniquest-json-line uniquest-json-one" x="524" y="400">{ coins, abilities, weapons,</text><text class="uniquest-json-line uniquest-json-two" x="536" y="419">colours, audio, GPA }</text><text class="uniquest-json-line uniquest-json-three" x="524" y="445">RECURSIVE DEFAULT MERGE → MIGRATE</text></g>
+              <g class="uniquest-module uniquest-exports"><rect x="505" y="488" width="225" height="70"/><text class="uniquest-heading" x="524" y="514">EXPORT TARGETS</text><g class="uniquest-export uniquest-export-web"><rect x="524" y="528" width="54" height="18"/><text x="551" y="540">WEB/PWA</text></g><g class="uniquest-export uniquest-export-android"><rect x="584" y="528" width="58" height="18"/><text x="613" y="540">ANDROID</text></g><g class="uniquest-export uniquest-export-desktop"><rect x="648" y="528" width="62" height="18"/><text x="679" y="540">DESKTOP</text></g></g>
+            </svg>
+            <div class="uniquest-mobile" aria-label="UniQuest game architecture and runtime flow">
+              <div class="uniquest-mobile-level"><span>Godot 4 · 2D level</span><i class="platform-a"></i><i class="platform-b"></i><i class="platform-c"></i><b class="mobile-player" aria-hidden="true"></b><em class="mobile-coin" aria-hidden="true"></em><strong class="mobile-enemy" aria-hidden="true"></strong><u aria-hidden="true"></u></div>
+              <div class="uniquest-mobile-fsm"><span>Character FSM</span><div><b>Run</b><b>Jump</b><b>Fall</b><b>Attack</b></div><small>Dash · glide · death</small></div>
+              <i aria-hidden="true"></i>
+              <div class="uniquest-mobile-stage"><span>Global game manager</span><b>Scenes · progression · combat · GPA</b></div>
+              <i aria-hidden="true"></i>
+              <div class="uniquest-mobile-stage"><span>JSON save + migration</span><b>Coins · unlocks · colours · audio</b></div>
+              <i aria-hidden="true"></i>
+              <div class="uniquest-mobile-stage uniquest-mobile-exports"><span>Export targets</span><div><b>Web/PWA</b><b>Android</b><b>Desktop</b></div></div>
+            </div>
+            <figcaption class="diagram-caption" id="uniquest-caption"><b>Input → character state → game systems → JSON save → export</b></figcaption>
+          </figure>
+        </div>
+      </article>
     </section>
-    <section class="project-index section-shell" aria-label="Projects">
-      <article class="project-row" id="fall-detection">
-        <div class="project-row-meta"><span>01</span><time datetime="2026-02">Feb — Mar 2026</time></div>
-        <div class="project-row-title"><p>Embedded system</p><h2>Wearable fall detection device</h2></div>
-        <div class="project-row-detail"><p>Developed STM32 firmware in C to process accelerometer and gyroscope data for fall detection. I implemented a sliding-window moving average filter in assembly and integrated NFC-based data transfer for exporting stored data to a mobile dashboard.</p><div class="tech-row"><span>STM32</span><span>C</span><span>Assembly</span><span>IMU</span><span>NFC</span></div></div>
-      </article>
-      <article class="project-row" id="kmap">
-        <div class="project-row-meta"><span>02</span><time datetime="2025-10">Oct — Nov 2025</time></div>
-        <div class="project-row-title"><p>FPGA / digital logic</p><h2>K-Map simplifier &amp; visualiser</h2></div>
-        <div class="project-row-detail"><p>Designed an FPGA system for entering three-variable K-Maps and viewing Boolean expressions and logic circuits in real time. I built the input and visualisation logic, SOP/POS selection, canonical-expression generation, OLED rendering, and top-level integration of the team’s submodules.</p><div class="tech-row"><span>Verilog</span><span>FPGA</span><span>OLED</span><span>Digital logic</span></div></div>
-      </article>
-      <article class="project-row" id="rescue-robot">
-        <div class="project-row-meta"><span>03</span><time datetime="2025-01">Jan — Apr 2025</time></div>
-        <div class="project-row-title"><p>Autonomous robotics</p><h2>Search-and-rescue robot</h2></div>
-        <div class="project-row-detail"><p>Built a TurtleBot3 system that navigated an unknown maze and detected heat signatures. The system combined ROS 2 Humble, Nav2, SLAM, 2D LiDAR, IR sensing, A* path planning, and application logic that generated goals from detected heat sources.</p><div class="tech-row"><span>ROS 2</span><span>Nav2</span><span>SLAM</span><span>A*</span><span>LiDAR</span></div></div>
-      </article>
-      <article class="project-row" id="cuddlecare">
-        <div class="project-row-meta"><span>04</span><time datetime="2025-09">Sep — Nov 2025</time></div>
-        <div class="project-row-title"><p>Software engineering</p><h2>CuddleCare</h2></div>
-        <div class="project-row-detail"><p>Worked on a Java command-line pet-care system with a command-based architecture. I implemented core commands, defensive validation, structured logging, fault-tolerant storage handling, JUnit tests, UML diagrams, and sections of the user and developer documentation.</p><div class="tech-row"><span>Java</span><span>JUnit</span><span>CLI</span><span>UML</span></div></div>
-      </article>
-      <article class="project-row" id="uniquest">
-        <div class="project-row-meta"><span>05</span><time datetime="2025-05">May — Aug 2025</time></div>
-        <div class="project-row-title"><p>Game development</p><h2>UniQuest</h2></div>
-        <div class="project-row-detail"><p>Built a two-person NUS-themed platformer in Godot. I worked on character customisation, combat, collectables, progression, touch controls, and cross-platform deployment, while the team created the sprites, tilesheets, and music in-house.</p><div class="tech-row"><span>Godot</span><span>GDScript</span><span>Android</span><span>Web</span></div><a class="text-link" href="https://uniquest.harshitsri.com" target="_blank" rel="noreferrer">Play the web build <span aria-hidden="true">↗</span></a></div>
-      </article>
-      <article class="project-row" id="garuda">
-        <div class="project-row-meta"><span>06</span><time datetime="2020-11">Nov 2020 — Nov 2022</time></div>
-        <div class="project-row-title"><p>Software</p><h2>GARUDA Discord bot</h2></div>
-        <div class="project-row-detail"><p>Developed and maintained a Node.js and Discord.js bot with games, moderation tools, giveaways, greetings, and server utilities. Over two years, it grew to operate across more than 1,000 servers.</p><div class="tech-row"><span>Node.js</span><span>Discord.js</span><span>JavaScript</span></div><a class="text-link" href="https://github.com/HarshitSrivastavaHS/GARUDA" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a></div>
-      </article>
+
+    <section class="project-archive page-shell" aria-labelledby="archive-title">
+      <div class="archive-heading"><div><p class="eyebrow"><span>06</span> More work</p><h2 id="archive-title">More projects.</h2></div><p>A shorter list of other things I have built.</p></div>
+      <article class="archive-row" data-reveal><span>2026</span><h3>Vision-language model robustness benchmark</h3><p>Built a reproducible Qwen2.5-VL evaluation pipeline, visual prompt-injection attack, image-only defense, linked experiment artifacts, metrics, and automated tests.</p><div class="tag-row"><span>PyTorch</span><span>Qwen2.5-VL</span><span>OpenCV</span></div></article>
+      <article class="archive-row" data-reveal><span>2025</span><h3>CuddleCare</h3><p>Designed core command architecture, parsing, dynamic help, overdue-treatment queries, defensive persistence, logging, JUnit tests, and PlantUML documentation for a Java CLI.</p><div class="tag-row"><span>Java</span><span>JUnit 5</span><span>PlantUML</span></div></article>
+      <article class="archive-row" data-reveal><span>2024</span><h3>Robot car builds</h3><p>Programmed and wired obstacle-course and maze-navigating Arduino robots using motor control, ultrasonic, IR, LDR, and mechanical actuation.</p><div class="tag-row"><span>Arduino</span><span>C</span><span>Sensors</span></div></article>
+      <article class="archive-row" data-reveal><span>2023</span><h3>JavaCS</h3><p>Built a server-rendered archive for 30 ISC Computer Science solutions with dynamic routing, JSON-backed content, search, filtering, and mobile navigation.</p><div class="tag-row"><span>Node.js</span><span>Express</span><span>EJS</span></div></article>
+      <article class="archive-row" data-reveal><span>2020—22</span><h3>GARUDA</h3><p>Developed a multipurpose Discord bot with modular commands, MongoDB-backed configuration, persistent giveaways, moderation, and community tools.</p><div class="tag-row"><span>Node.js</span><span>Discord.js</span><span>MongoDB</span></div></article>
     </section>
-    <section class="subpage-contact section-shell"><p class="section-kicker">Next</p><h2>Back to the system view.</h2><a class="button button-primary" href="index.html#work">Return to homepage <span aria-hidden="true">←</span></a></section>
+
+    <section class="contact-band"><h2>Experience and education are in the résumé.</h2><a href="assets/Harshit-Srivastava-Resume.pdf">Open résumé ↗</a></section>
   </main>
-  <footer class="site-footer"><a class="wordmark" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 20h8m14 0h8M20 5v8m0 14v8"/><rect x="13" y="13" width="14" height="14" rx="3"/><circle cx="20" cy="20" r="2"/></svg><span>Harshit Srivastava</span></a><p>Computer Engineering · Embedded systems · Robotics</p><p>© <span data-year>2026</span></p></footer>
-  <script src="assets/js/site.js" defer></script>
+  <footer class="site-footer"><div><span>Harshit Srivastava</span><p>Computer Engineering · NUS</p></div><nav aria-label="Contact links"><a href="mailto:harshit.srivastava@u.nus.edu">Email</a><a href="https://github.com/HarshitSrivastavaHS" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/hsharshit/" target="_blank" rel="noreferrer">LinkedIn</a></nav><p>© <span data-year></span></p></footer>
 </body>
 </html>

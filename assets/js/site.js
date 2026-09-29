@@ -3,6 +3,12 @@ document.documentElement.classList.add("js");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
+function initEntry() {
+  if (reduceMotion.matches) return;
+  document.body.classList.add("is-entering");
+  window.setTimeout(() => document.body.classList.remove("is-entering"), 650);
+}
+
 function initNavigation() {
   const header = document.querySelector("[data-header]");
   const toggle = document.querySelector("[data-nav-toggle]");
@@ -10,10 +16,10 @@ function initNavigation() {
   if (!header || !toggle || !nav) return;
 
   const label = toggle.querySelector(".sr-only");
-  const closeMenu = (returnFocus = false) => {
+  const close = (returnFocus = false) => {
     nav.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
-    label.textContent = "Open menu";
+    if (label) label.textContent = "Open menu";
     if (returnFocus) toggle.focus();
   };
 
@@ -21,235 +27,405 @@ function initNavigation() {
     const open = toggle.getAttribute("aria-expanded") !== "true";
     nav.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
-    label.textContent = open ? "Close menu" : "Open menu";
-    if (open) nav.querySelector("a")?.focus();
+    if (label) label.textContent = open ? "Close menu" : "Open menu";
   });
+  nav.addEventListener("click", (event) => { if (event.target.closest("a")) close(); });
+  document.addEventListener("click", (event) => { if (!header.contains(event.target)) close(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(true); });
+  window.addEventListener("resize", () => { if (window.innerWidth > 860) close(); }, { passive: true });
 
-  nav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) closeMenu();
+  const current = location.pathname.split("/").pop() || "index.html";
+  nav.querySelectorAll("a").forEach((link) => {
+    const target = new URL(link.href, location.href).pathname.split("/").pop() || "index.html";
+    if (target === current) link.setAttribute("aria-current", "page");
   });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && nav.classList.contains("is-open")) closeMenu(true);
-  });
-
-  document.addEventListener("click", (event) => {
-    if (nav.classList.contains("is-open") && !header.contains(event.target)) closeMenu();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 820) closeMenu();
-  }, { passive: true });
-}
-
-function initSectionTracking() {
-  const header = document.querySelector("[data-header]");
-  const sections = [...document.querySelectorAll("[data-observe-section]")];
-  const links = [...document.querySelectorAll("[data-section-link]")];
-  const navLinks = [...document.querySelectorAll(".site-nav a[href^='#']")];
-  const progress = document.querySelector("[data-progress-fill]");
-  if (!sections.length) return;
-
-  const setActive = (id) => {
-    links.forEach((link) => link.classList.toggle("is-active", link.dataset.sectionLink === id));
-    navLinks.forEach((link) => {
-      const active = link.hash === `#${id}`;
-      if (active) link.setAttribute("aria-current", "true");
-      else link.removeAttribute("aria-current");
-    });
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (visible) setActive(visible.target.id);
-  }, { rootMargin: "-20% 0px -62% 0px", threshold: [0, .1, .3, .6] });
-
-  sections.forEach((section) => observer.observe(section));
-  setActive("home");
 
   let ticking = false;
-  const update = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const amount = scrollable > 0 ? window.scrollY / scrollable : 0;
-    if (progress) progress.style.height = `${clamp(amount) * 100}%`;
-    header?.classList.toggle("is-scrolled", window.scrollY > 24);
+  const updateHeader = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 24);
     ticking = false;
   };
   window.addEventListener("scroll", () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
+    if (!ticking) { ticking = true; requestAnimationFrame(updateHeader); }
   }, { passive: true });
+  updateHeader();
+}
+
+function initPageTransitions() {
+  if (reduceMotion.matches) return;
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const url = new URL(link.href, location.href);
+    if (url.origin !== location.origin || url.hash || link.hasAttribute("download") || link.target === "_blank" || url.pathname.endsWith(".pdf")) return;
+    event.preventDefault();
+    document.body.classList.add("is-leaving");
+    window.setTimeout(() => { location.href = url.href; }, 380);
+  });
+  window.addEventListener("pageshow", () => document.body.classList.remove("is-leaving"));
+}
+
+function initReveals() {
+  const items = [...document.querySelectorAll("[data-reveal]")];
+  if (!items.length) return;
+  if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: "0px 0px -10%", threshold: .08 });
+  items.forEach((item) => observer.observe(item));
+}
+
+function initSystemSketch() {
+  const sketch = document.querySelector("[data-system-sketch]");
+  if (!sketch) return;
+  const controls = [...sketch.querySelectorAll("[data-sketch-control]")];
+  const nodes = [...sketch.querySelectorAll("[data-sketch-node]")];
+  const paths = [...sketch.querySelectorAll("[data-path]")];
+  const signals = [...sketch.querySelectorAll("[data-signal]")];
+  const order = ["hardware", "software", "robotics", "creative"];
+  const svgs = [...sketch.querySelectorAll("svg")];
+  let current = 0;
+  let visible = !("IntersectionObserver" in window);
+  let cycleTimer;
+
+  const activate = (name) => {
+    current = Math.max(0, order.indexOf(name));
+    controls.forEach((control) => control.setAttribute("aria-pressed", String(control.dataset.sketchControl === name)));
+    nodes.forEach((node) => node.classList.toggle("is-active", node.dataset.sketchNode === name));
+    paths.forEach((path) => path.classList.toggle("is-active", path.dataset.path === name));
+    signals.forEach((signal) => signal.classList.toggle("is-active", signal.dataset.signal === name));
+  };
+  const stopCycle = () => window.clearTimeout(cycleTimer);
+  const startCycle = () => {
+    stopCycle();
+    if (reduceMotion.matches || !visible || document.hidden) return;
+    cycleTimer = window.setTimeout(() => {
+      current = (current + 1) % order.length;
+      activate(order[current]);
+      startCycle();
+    }, 2300);
+  };
+  controls.forEach((control) => {
+    ["click", "mouseenter", "focus"].forEach((type) => control.addEventListener(type, () => {
+      activate(control.dataset.sketchControl);
+      startCycle();
+    }));
+  });
+  activate("hardware");
+
+  const sync = () => {
+    svgs.forEach((svg) => {
+      if (typeof svg.pauseAnimations !== "function") return;
+      if (!visible || document.hidden || reduceMotion.matches) svg.pauseAnimations();
+      else svg.unpauseAnimations();
+    });
+    startCycle();
+  };
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    }, { threshold: .05 });
+    observer.observe(sketch);
+  } else {
+    sync();
+  }
+  document.addEventListener("visibilitychange", sync);
+}
+
+function initProjectScenes() {
+  const scenes = [...document.querySelectorAll("[data-scene]")];
+  if (!scenes.length) return;
+  let activeScenes = new Set();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.isIntersecting ? activeScenes.add(entry.target) : activeScenes.delete(entry.target));
+  }, { rootMargin: "20% 0px", threshold: 0 });
+  scenes.forEach((scene) => observer.observe(scene));
+
+  let ticking = false;
+  const update = () => {
+    activeScenes.forEach((scene) => {
+      const rect = scene.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - innerHeight);
+      const progress = clamp(-rect.top / travel);
+      scene.style.setProperty("--scene-progress", progress.toFixed(3));
+      scene.dataset.progress = String(Math.round(progress * 100));
+      const phases = [...scene.querySelectorAll("[data-phase]")];
+      phases.forEach((phase, index) => phase.classList.toggle("active", progress >= index / Math.max(1, phases.length)));
+    });
+    ticking = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking && !reduceMotion.matches) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
   update();
 }
 
-function initHeroSystem() {
-  const buttons = [...document.querySelectorAll("[data-domain]")];
-  const nodes = [...document.querySelectorAll("[data-system-node]")];
-  const label = document.querySelector("[data-system-label]");
-  const system = document.querySelector("[data-hero-system]");
-  const schematic = system?.querySelector("svg");
-  if (!buttons.length || !system) return;
-
-  const names = {
-    embedded: "Embedded systems",
-    robotics: "Robotics & autonomy",
-    electronics: "Electronics & PCB",
-    software: "Engineering software"
+function initFallAnimation() {
+  const diagram = document.querySelector(".fall-diagram");
+  if (!diagram || reduceMotion.matches) return;
+  let visible = !("IntersectionObserver" in window);
+  let timer;
+  const stop = () => {
+    window.clearTimeout(timer);
+    diagram.classList.remove("is-running");
   };
-
-  const activate = (domain) => {
-    buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.domain === domain)));
-    nodes.forEach((node) => node.classList.toggle("is-active", node.dataset.systemNode === domain));
-    if (label) label.textContent = names[domain];
+  const run = () => {
+    if (!visible || document.hidden) return;
+    diagram.classList.remove("is-running");
+    void diagram.offsetWidth;
+    if (!visible || document.hidden) return;
+    diagram.classList.add("is-running");
+    timer = window.setTimeout(run, 7450);
   };
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => activate(button.dataset.domain));
-    button.addEventListener("mouseenter", () => activate(button.dataset.domain));
-    button.addEventListener("focus", () => activate(button.dataset.domain));
-  });
-
-  if (schematic && typeof schematic.pauseAnimations === "function") {
-    const motionObserver = new IntersectionObserver(([entry]) => {
-      if (reduceMotion.matches || document.hidden || !entry.isIntersecting) schematic.pauseAnimations();
-      else schematic.unpauseAnimations();
-    }, { threshold: .05 });
-    motionObserver.observe(system);
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) schematic.pauseAnimations();
-      else if (!reduceMotion.matches) schematic.unpauseAnimations();
-    });
+  const sync = () => {
+    stop();
+    if (visible && !document.hidden) run();
+  };
+  if (!("IntersectionObserver" in window)) {
+    run();
+    document.addEventListener("visibilitychange", sync);
+    return;
   }
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    sync();
+  }, { rootMargin: "5% 0px", threshold: .12 });
+  observer.observe(diagram);
+  document.addEventListener("visibilitychange", sync);
 }
 
-function initExperienceTimeline() {
-  const section = document.querySelector("#experience");
-  const entries = [...document.querySelectorAll("[data-experience-entry]")];
-  if (!section || !entries.length) return;
+function initRescueAnimation() {
+  const diagram = document.querySelector(".rescue-diagram");
+  if (!diagram || reduceMotion.matches) return;
+  let visible = !("IntersectionObserver" in window);
+  let timer;
+  const stop = () => {
+    window.clearTimeout(timer);
+    diagram.classList.remove("is-running");
+  };
+  const run = () => {
+    if (!visible || document.hidden) return;
+    diagram.classList.remove("is-running");
+    void diagram.offsetWidth;
+    if (!visible || document.hidden) return;
+    diagram.classList.add("is-running");
+    timer = window.setTimeout(run, 7000);
+  };
+  const sync = () => {
+    stop();
+    if (visible && !document.hidden) run();
+  };
+  if (!("IntersectionObserver" in window)) {
+    run();
+    document.addEventListener("visibilitychange", sync);
+    return;
+  }
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    sync();
+  }, { rootMargin: "5% 0px", threshold: .12 });
+  observer.observe(diagram);
+  document.addEventListener("visibilitychange", sync);
+}
 
+function initUniquestAnimation() {
+  const diagram = document.querySelector(".uniquest-diagram");
+  if (!diagram || reduceMotion.matches) return;
+  let visible = !("IntersectionObserver" in window);
+  let timer;
+  const stop = () => {
+    window.clearTimeout(timer);
+    diagram.classList.remove("is-running");
+  };
+  const run = () => {
+    if (!visible || document.hidden) return;
+    diagram.classList.remove("is-running");
+    void diagram.offsetWidth;
+    if (!visible || document.hidden) return;
+    diagram.classList.add("is-running");
+    timer = window.setTimeout(run, 7200);
+  };
+  const sync = () => {
+    stop();
+    if (visible && !document.hidden) run();
+  };
+  if (!("IntersectionObserver" in window)) {
+    run();
+    document.addEventListener("visibilitychange", sync);
+    return;
+  }
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    sync();
+  }, { rootMargin: "5% 0px", threshold: .12 });
+  observer.observe(diagram);
+  document.addEventListener("visibilitychange", sync);
+}
+
+function initKmapAnimation() {
+  const diagram = document.querySelector("[data-kmap-animation]");
+  if (!diagram) return;
+  const examples = [
+    {
+      mode: "SOP", ones: [2, 3, 7], canonical: "Σm(2,3,7)", expression: "F = A′B + BC",
+      summary: "Σm(2,3,7) → TWO GROUPS → TWO TERMS", primary: "m2 + m3 → A′B", secondary: "m3 + m7 → BC",
+      switches: "SW2, SW3, SW7", groupAction: "Group adjacent 1s", live: "Example 1: SOP groups minterms 2, 3, and 7 to produce A prime B plus BC."
+    },
+    {
+      mode: "POS", ones: [0, 1, 4, 5], canonical: "ΠM(2,3,6,7)", expression: "F = B′",
+      summary: "ΠM(2,3,6,7) → GROUP FOUR 0s → ONE SUM TERM", primary: "M2 · M3 · M6 · M7 → B′", secondary: "",
+      switches: "SW0, SW1, SW4, SW5", groupAction: "Group adjacent 0s", live: "Example 2: POS groups maxterms 2, 3, 6, and 7 to produce B prime."
+    },
+    {
+      mode: "SOP", ones: [0, 2, 4, 6], canonical: "Σm(0,2,4,6)", expression: "F = C′",
+      summary: "Σm(0,2,4,6) → WRAP-AROUND QUAD → ONE TERM", primary: "m0 + m2 + m4 + m6 → C′", secondary: "",
+      switches: "SW0, SW2, SW4, SW6", groupAction: "Group adjacent 1s", live: "Example 3: SOP groups edge-adjacent minterms 0, 2, 4, and 6 to produce C prime."
+    }
+  ];
+  const switches = [...diagram.querySelectorAll("[data-kmap-switch]")];
+  const cells = [...diagram.querySelectorAll("[data-kmap-layout]")];
+  const desktopGroups = [...diagram.querySelectorAll("[data-kmap-group-set]")];
+  const mobileGroups = [...diagram.querySelectorAll("[data-kmap-mobile-group-set]")];
+  const live = diagram.querySelector("[data-kmap-live]");
+  const primaryLegend = diagram.querySelector("[data-kmap-legend-primary]");
+  const secondaryLegend = diagram.querySelector("[data-kmap-legend-secondary]");
+  let current = 0;
+  let inView = false;
+  let timer;
+  let changeTimer;
+
+  const setText = (selector, value) => diagram.querySelectorAll(selector).forEach((node) => { node.textContent = value; });
+  const render = (index, announce = false) => {
+    const example = examples[index];
+    const active = new Set(example.ones);
+    current = index;
+    diagram.dataset.kmapState = String(index);
+    switches.forEach((item) => {
+      const minterm = Number(item.dataset.kmapSwitch);
+      const on = active.has(minterm);
+      item.classList.toggle("is-on", on);
+      const value = item.querySelector("[data-kmap-switch-value]");
+      if (value) value.textContent = `m${minterm} · ${on ? 1 : 0}`;
+    });
+    cells.forEach((cell) => {
+      const minterm = Number(cell.dataset.minterm);
+      const on = active.has(minterm);
+      cell.dataset.value = on ? "1" : "0";
+      cell.classList.toggle("is-one", on);
+      const value = cell.querySelector(".kmap-value, b");
+      if (value) value.textContent = on ? "1" : "0";
+    });
+    desktopGroups.forEach((group, groupIndex) => group.classList.toggle("is-current", groupIndex === index));
+    mobileGroups.forEach((group, groupIndex) => group.classList.toggle("is-current", groupIndex === index));
+    diagram.querySelectorAll("[data-kmap-mode]").forEach((control) => control.classList.toggle("is-selected", control.dataset.kmapMode === example.mode.toLowerCase()));
+    setText("[data-kmap-canonical]", example.canonical);
+    setText("[data-kmap-expression]", example.expression);
+    setText("[data-kmap-summary]", example.summary);
+    setText("[data-kmap-mobile-expression]", example.expression);
+    setText("[data-kmap-mobile-switches]", example.switches);
+    setText("[data-kmap-mobile-canonical]", example.canonical);
+    setText("[data-kmap-group-action]", example.groupAction);
+    if (primaryLegend) primaryLegend.textContent = example.primary;
+    if (secondaryLegend) {
+      secondaryLegend.textContent = example.secondary;
+      secondaryLegend.closest("span").hidden = !example.secondary;
+    }
+    if (announce && live) live.textContent = example.live;
+  };
+  const clearCycle = () => { window.clearTimeout(timer); timer = undefined; };
+  const schedule = (delay = 5600) => {
+    clearCycle();
+    if (!inView || document.hidden || reduceMotion.matches) return;
+    timer = window.setTimeout(() => select((current + 1) % examples.length), delay);
+  };
+  const select = (index) => {
+    window.clearTimeout(changeTimer);
+    clearCycle();
+    if (index === current) {
+      schedule();
+      return;
+    }
+    diagram.classList.add("is-changing");
+    changeTimer = window.setTimeout(() => {
+      render(index);
+      diagram.classList.remove("is-changing");
+      schedule();
+    }, reduceMotion.matches ? 0 : 320);
+  };
+
+  render(0);
+  if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+    diagram.classList.add("is-assembled");
+    return;
+  }
+  const observer = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+    if (inView) {
+      diagram.classList.add("is-assembled");
+      schedule(diagram.dataset.kmapStarted ? 2200 : 4800);
+      diagram.dataset.kmapStarted = "true";
+    } else clearCycle();
+  }, { rootMargin: "10% 0px", threshold: .12 });
+  observer.observe(diagram);
+  document.addEventListener("visibilitychange", () => document.hidden ? clearCycle() : schedule(1800));
+}
+
+function initTimeline() {
+  const timeline = document.querySelector("[data-timeline]");
+  const entries = [...document.querySelectorAll("[data-timeline-entry]")];
+  if (!timeline || !entries.length) return;
   const observer = new IntersectionObserver((items) => {
     items.forEach((item) => item.target.classList.toggle("is-active", item.isIntersecting));
-  }, { rootMargin: "-25% 0px -40% 0px", threshold: .15 });
+  }, { rootMargin: "-28% 0px -38%", threshold: .1 });
   entries.forEach((entry) => observer.observe(entry));
   entries[0].classList.add("is-active");
 
   let ticking = false;
   const update = () => {
-    const rect = section.getBoundingClientRect();
-    const distance = Math.max(1, rect.height - window.innerHeight * .65);
-    const passed = window.innerHeight * .45 - rect.top;
-    section.style.setProperty("--timeline-progress", `${clamp(passed / distance) * 100}%`);
+    const rect = timeline.getBoundingClientRect();
+    const progress = clamp((innerHeight * .48 - rect.top) / Math.max(1, rect.height - innerHeight * .4));
+    timeline.style.setProperty("--timeline-progress", `${progress * 100}%`);
     ticking = false;
   };
   window.addEventListener("scroll", () => {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    if (!ticking && !reduceMotion.matches) { ticking = true; requestAnimationFrame(update); }
   }, { passive: true });
   update();
 }
 
-function initWorkStory() {
-  const story = document.querySelector("[data-work-story]");
-  const stage = document.querySelector("[data-work-stage]");
-  const track = document.querySelector("[data-work-track]");
-  const projects = [...document.querySelectorAll("[data-project]")];
-  const counter = document.querySelector("[data-work-count]");
-  if (!story || !stage || !track || projects.length < 2) return;
-
-  const query = window.matchMedia("(min-width: 1024px) and (min-height: 650px)");
-  let enabled = false;
-  let start = 0;
-  let distance = 1;
-  let ticking = false;
-
-  const updatePosition = () => {
-    if (!enabled) return;
-    const amount = clamp((window.scrollY - start) / distance);
-    track.style.transform = `translate3d(${-amount * distance}px, 0, 0)`;
-    story.style.setProperty("--work-progress", `${amount * 100}%`);
-    const index = Math.min(projects.length - 1, Math.round(amount * (projects.length - 1)));
-    if (counter) counter.textContent = `${String(index + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
-    ticking = false;
-  };
-
-  const measure = () => {
-    const coarsePointer = window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
-    const shouldEnable = query.matches && !coarsePointer && !reduceMotion.matches;
-    if (!shouldEnable) {
-      enabled = false;
-      story.classList.remove("is-enhanced");
-      story.style.height = "";
-      story.style.removeProperty("--work-progress");
-      track.style.transform = "";
-      if (counter) counter.textContent = `01 / ${String(projects.length).padStart(2, "0")}`;
-      return;
-    }
-
-    enabled = true;
-    story.classList.add("is-enhanced");
-    story.style.height = "";
-    distance = Math.max(1, track.scrollWidth - window.innerWidth);
-    const storyTop = story.getBoundingClientRect().top + window.scrollY;
-    start = storyTop + stage.offsetTop;
-    story.style.height = `${stage.offsetTop + window.innerHeight + distance}px`;
-    updatePosition();
-  };
-
-  window.addEventListener("scroll", () => {
-    if (enabled && !ticking) { ticking = true; requestAnimationFrame(updatePosition); }
-  }, { passive: true });
-
-  let resizeFrame;
-  window.addEventListener("resize", () => {
-    cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(measure);
-  }, { passive: true });
-  query.addEventListener?.("change", measure);
-  reduceMotion.addEventListener?.("change", measure);
-  window.addEventListener("load", measure, { once: true });
-  measure();
-}
-
-function initSkillEvidence() {
-  const buttons = [...document.querySelectorAll("[data-skill]")];
-  if (!buttons.length) return;
-  let clearTimer;
-
-  const highlight = (tag, source) => {
-    buttons.forEach((button) => button.classList.toggle("is-active", button === source));
-    const related = [...document.querySelectorAll(`[data-tags~="${tag}"]`)];
-    related.forEach((item) => {
-      item.classList.remove("skill-related");
-      void item.offsetWidth;
-      item.classList.add("skill-related");
+function initScrapbook() {
+  if (reduceMotion.matches || !matchMedia("(pointer:fine)").matches) return;
+  document.querySelectorAll(".scrap-media").forEach((media) => {
+    media.addEventListener("pointermove", (event) => {
+      const rect = media.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      media.style.translate = `${x * 7}px ${y * 7}px`;
     });
-    window.clearTimeout(clearTimer);
-    clearTimer = window.setTimeout(() => {
-      related.forEach((item) => item.classList.remove("skill-related"));
-      buttons.forEach((button) => button.classList.remove("is-active"));
-    }, 1600);
-  };
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => highlight(button.dataset.skill, button));
-    button.addEventListener("mouseenter", () => highlight(button.dataset.skill, button));
-    button.addEventListener("focus", () => highlight(button.dataset.skill, button));
+    media.addEventListener("pointerleave", () => { media.style.translate = ""; });
   });
 }
 
-function setCurrentYear() {
-  document.querySelectorAll("[data-year]").forEach((node) => {
-    node.textContent = String(new Date().getFullYear());
-  });
-}
-
+document.querySelectorAll("[data-year]").forEach((node) => { node.textContent = String(new Date().getFullYear()); });
+initEntry();
 initNavigation();
-initSectionTracking();
-initHeroSystem();
-initExperienceTimeline();
-initWorkStory();
-initSkillEvidence();
-setCurrentYear();
+initPageTransitions();
+initReveals();
+initSystemSketch();
+initProjectScenes();
+initFallAnimation();
+initRescueAnimation();
+initUniquestAnimation();
+initKmapAnimation();
+initTimeline();
+initScrapbook();

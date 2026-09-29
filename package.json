@@ -1,0 +1,16 @@
+{
+  "name": "harshitsri-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "resume": "node scripts/generate-resume.mjs",
+    "social": "node scripts/generate-social.mjs",
+    "test": "node scripts/check-site.mjs",
+    "test:visual": "node scripts/visual-check.mjs"
+  },
+  "devDependencies": {
+    "@sparticuz/chromium": "^153.0.0",
+    "playwright": "^1.63.0"
+  }
+}

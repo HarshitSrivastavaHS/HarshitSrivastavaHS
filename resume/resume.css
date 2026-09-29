@@ -1,0 +1,41 @@
+@page { size: Letter; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #d8d5d2; color: #1c1720; font-family: Arial, Helvetica, sans-serif; font-size: 8.35pt; line-height: 1.28; }
+a { color: inherit; text-decoration: none; }
+.resume-page { position: relative; width: 8.5in; height: 11in; margin: .2in auto; padding: .36in .42in .32in; overflow: hidden; background: #fffdf9; box-shadow: 0 5px 25px #0002; page-break-after: always; }
+.resume-page::before { content: ""; position: absolute; inset: 0 auto 0 0; width: .09in; background: #6b2fcf; }
+.resume-header { padding-bottom: .12in; display: grid; grid-template-columns: 1fr 2.25in; gap: .25in; border-bottom: 2.5px solid #6b2fcf; }
+.resume-header h1 { margin: 0; font-size: 24pt; line-height: 1; letter-spacing: -.8pt; }
+.resume-header > div > p { margin: 5px 0 0; color: #5c5061; font-weight: 700; font-size: 8.4pt; }
+address { display: grid; justify-items: end; align-content: end; gap: 1px; font-style: normal; font-size: 7.4pt; }
+.summary { margin: .11in 0 .04in; padding: .08in .11in; background: #f0e9fa; border-left: 3px solid #c0ef36; }
+.summary p { margin: 0; }
+section { margin-top: .10in; }
+h2 { margin: 0 0 .065in; padding-bottom: 3px; border-bottom: 1px solid #b9adb9; color: #6428be; font-size: 9.8pt; letter-spacing: .8pt; text-transform: uppercase; }
+h3 { margin: 0; font-size: 9.3pt; line-height: 1.15; }
+p { margin: 2px 0; }
+.entry-heading { display: grid; grid-template-columns: 1fr auto; gap: .15in; align-items: start; }
+.entry-heading > div > p { color: #5d5260; font-size: 7.8pt; }
+.entry-heading > b, .entry-heading > div + b, .entry-heading > div + div b { color: #4b3c50; font-size: 7.5pt; text-align: right; white-space: nowrap; }
+.entry-heading > div:last-child { display: grid; justify-items: end; }
+.entry-heading span { color: #5d5260; font-size: 7.4pt; }
+.coursework { margin-top: 5px; font-size: 7.6pt; }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px .16in; }
+.skills-grid p { display: grid; grid-template-columns: .98in 1fr; gap: 5px; margin: 0; }
+.skills-grid b { color: #6428be; font-size: 7.6pt; }
+.skills-grid span { font-size: 7.25pt; }
+article { margin-bottom: .075in; }
+ul { margin: 3px 0 0; padding-left: 14px; }
+li { margin: 1.7px 0; }
+li::marker { color: #6b2fcf; }
+.page-header { margin: -.07in 0 .16in; padding-bottom: .08in; display: flex; justify-content: space-between; border-bottom: 2.5px solid #6b2fcf; color: #5d5260; font-size: 7.5pt; text-transform: uppercase; letter-spacing: .8pt; }
+.page-header b { color: #6428be; }
+.page-two article { margin-bottom: .095in; }
+.page-two li { margin: 2.2px 0; }
+.additional { margin-top: .13in; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5px .2in; }
+.two-col p { margin: 0; font-size: 7.6pt; }
+.two-col b { color: #6428be; }
+.resume-footer { position: absolute; left: .42in; right: .42in; bottom: .18in; display: flex; justify-content: space-between; color: #6f626f; font-size: 6.8pt; text-transform: uppercase; letter-spacing: .6pt; }
+.page-one::after { content: "Page 1 / 2"; position: absolute; right: .42in; bottom: .18in; color: #6f626f; font-size: 6.8pt; text-transform: uppercase; letter-spacing: .6pt; }
+@media print { html, body { background: #fff; } .resume-page { margin: 0; box-shadow: none; } }
